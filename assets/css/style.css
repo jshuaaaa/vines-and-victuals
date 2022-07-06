@@ -1,0 +1,35 @@
+.titletext{
+    background-color: rgba(255, 166, 0, 0.849);
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    height: 14vh;
+}
+.titletext h1 {
+    color: white;
+    padding-top: 2vh;
+    font-size: 50px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-style: italic;
+}
+
+.owl-height {
+    max-height: 35vh;
+  }
+
+  .carousel-item img{
+    width: auto;
+    height: 245px;
+    max-height: 245px;
+    margin: auto; 
+    display: block;
+    }
+
+  .item img {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    height: 50vh
+  
+    
+  } 
