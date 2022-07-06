@@ -1,3 +1,8 @@
+main {
+  margin: 0;
+  height: 100vh;
+  background-color: rgba(255, 166, 0, 0.171);
+}
 .titletext{
     background-color: rgba(255, 166, 0, 0.849);
     text-align: center;
@@ -33,3 +38,16 @@
   
     
   } 
+
+.field.has-addons {
+  position: relative;
+  align-items: center;
+  justify-content: center;
+}
+.control {
+  position: relative;
+  /* display: flex; */
+  align-items: center;
+  justify-content: center;
+  /* width: 70vh; */
+}
