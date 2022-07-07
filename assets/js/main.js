@@ -47,7 +47,7 @@ searchButton.addEventListener("click", function(){
 	} else
 	getFood()
 })
-
+//Function getDrinks
 function getDrinks() {
 	fetch(url, options)
 	.then(response => response.json())
@@ -67,7 +67,7 @@ function getDrinks() {
 		}
 		
 	}
-
+//function getFoodByIngredients
 	function getFoodByIngredients(newUrl,options) {
 		fetch(newUrl, options)
 		.then(response => response.json())
@@ -97,7 +97,7 @@ function getDrinks() {
     })
 	.catch(err => console.error(err));
 }
-
+//Function getFood
 function getFood() {
 	console.log('getfood was called')
 	fetch(url, options)
