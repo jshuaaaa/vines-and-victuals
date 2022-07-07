@@ -1,21 +1,31 @@
+
+
 main {
   margin: 0;
   height: 100vh;
-  background-color: rgba(255, 166, 0, 0.171);
+  background-color: rgba(48, 48, 48);
 }
 .titletext{
-    background-color: rgba(255, 166, 0, 0.849);
+    background-color: rgb(48, 48, 48);
     text-align: center;
     align-items: center;
     justify-content: center;
-    height: 14vh;
+    height: 20vh;
 }
-.titletext h1 {
+.titletext {
     color: white;
-    padding-top: 2vh;
+    padding-top: 7vh;
     font-size: 50px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-style: italic;
+    display: flex;
+}
+#goldBorder{
+  position: fixed;
+  z-index: 0;
+}
+#logo{
+  position: relative;
 }
 
 .owl-height {
