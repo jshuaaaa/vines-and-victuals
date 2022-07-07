@@ -51,3 +51,10 @@ main {
   justify-content: center;
   /* width: 70vh; */
 }
+
+#settings {
+  background-image: url(../images/cog.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 30px;
+}

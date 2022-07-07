@@ -66,13 +66,38 @@
         <div class="columns is-centered">
   <div class="field has-addons">
   <div class="control">
-    <input id='searc' class="input is-large is-fluid " type="text" placeholder="What do you feel like eating? ">
+    <input id='search' class="input is-large is-fluid " type="text"  placeholder="What do you feel like eating? ">
+    
+  </div>
+  <div class="control">
+    <button id="settings" class="input is-large is-fluid js-modal-trigger " data-target="modal-js-example"></button>
+  </div>
+  <div id="modal-js-example" class="modal">
+    <div class="modal-background"></div>
+  
+    <div class="modal-content">
+      <div class="box">
+        <form>
+          <div class="box" style="border: 2px solid black;">
+          <h2><b>Search Criteria</b></h2>
+          </div>
+          <input type="radio" id="food" name="select" value="food">
+          <label for="food">Select to enter your food and get an awesome drink pairing!</label><br>
+          <input type="radio" id="drink" name="select" value="drink">
+          <label for="drink">Select to enter your drink and get an awesome food pairing!</label><br>
+          <button id="save-button">Save</button>
+        </form>
+      </div>
+    </div>
+  
+    <button class="modal-close is-large" aria-label="close"></button>
   </div>
   <div class="control">
     <a id="searchButton" class="button is-large is-info">
       Search
     </a>
   </div>
+  
 </div>
       </div>
     </div>
@@ -83,6 +108,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
     <script src="assets/js/onready.js"></script>
+    <script src="assets/js/modal.js"></script>
     <script src="./assets/js/main.js"></script>
 </body>
 </html>
