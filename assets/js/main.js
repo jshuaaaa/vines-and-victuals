@@ -1,3 +1,6 @@
+const search = document.getElementById('search')
+const searchButton = document.getElementById('searchButton')
+
 const options = {
 	method: 'GET',
 	headers: {
@@ -6,7 +9,14 @@ const options = {
 	}
 };
 
+searchButton.addEventListener("click", getDrinks)
+
+function getDrinks() {
 fetch('https://cocktails3.p.rapidapi.com/random', options)
 	.then(response => response.json())
-	.then(response => console.log(response))
+	.then(function(response){
+        console.log(response)
+        console.log(response.body[0].name)
+    })
 	.catch(err => console.error(err));
+}
