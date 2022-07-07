@@ -12,6 +12,7 @@ options = {
 }
 
 
+
 function settingsChecker(e) {
 	e.preventDefault()
 	if(food.checked) {
@@ -52,8 +53,39 @@ function getDrinks() {
 	.then(response => response.json())
 	.then(function(response){
 		console.log(response)
-		let ingredient = response.body[0].ingredients[2]
+		let ingredient;
+		var i = 0
+		let arrayStatusForFood = true
+		loopArray()
+	
+		function loopArray() {
+		
+		ingredient = response.body[0].ingredients[i]
 		newUrl = `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch?includeIngredients=${ingredient}&type=main course`
+		if(arrayStatusForFood === true) {
+			getFoodByIngredients(newUrl, options)
+		}
+		
+	}
+
+	function getFoodByIngredients(newUrl,options) {
+		fetch(newUrl, options)
+		.then(response => response.json())
+		.then(function(response) {
+			
+			
+			if(response.results.length === 0) {
+				i++
+				console.log('h')
+				arrayStatusForFood = true
+				loopArray(i)
+				
+			} else
+			console.log(response)
+			arrayStatusForFood = false
+	
+		}
+	)}
 		options = {
 			method: 'GET',
 			headers: {
@@ -61,7 +93,6 @@ function getDrinks() {
 			}
 		}
 		
-		getFoodByIngredients(newUrl, options)
 		
     })
 	.catch(err => console.error(err));
@@ -79,12 +110,5 @@ function getFood() {
 
 }
 
-function getFoodByIngredients(url,options) {
-	fetch(url, options)
-	.then(response => response.json())
-	.then(function(response) {
-		console.log(response)
 
-	}
-)}
 
