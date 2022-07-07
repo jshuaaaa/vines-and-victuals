@@ -51,7 +51,18 @@ function getDrinks() {
 	fetch(url, options)
 	.then(response => response.json())
 	.then(function(response){
-        console.log(response)
+		console.log(response)
+		let ingredient = response.body[0].ingredients[2]
+		newUrl = `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch?includeIngredients=${ingredient}&type=main course`
+		options = {
+			method: 'GET',
+			headers: {
+				'X-RapidAPI-Key': 'c36c798c41msh6e4944725bbf051p1c3342jsn7e587c0ecbdc'
+			}
+		}
+		
+		getFoodByIngredients(newUrl, options)
+		
     })
 	.catch(err => console.error(err));
 }
@@ -61,9 +72,19 @@ function getFood() {
 	fetch(url, options)
 	.then(response => response.json())
 	.then(function(response){
+	
         console.log(response)
     })
 	.catch(err => console.error(err));
 
 }
+
+function getFoodByIngredients(url,options) {
+	fetch(url, options)
+	.then(response => response.json())
+	.then(function(response) {
+		console.log(response)
+
+	}
+)}
 
