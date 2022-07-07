@@ -10,6 +10,10 @@ options = {
 		'X-RapidAPI-Key': 'c36c798c41msh6e4944725bbf051p1c3342jsn7e587c0ecbdc'
 	}
 }
+// If true calls Drink API
+// If false calls Food API
+
+let FoodOrDrink = true
 
 
 
@@ -17,7 +21,7 @@ function settingsChecker(e) {
 	e.preventDefault()
 	if(food.checked) {
 		console.log('e')
-		url = 'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/random?tags=vegetarian%2Cdessert&number=1'
+		FoodOrDrink = false
 		options = {
 			method: 'GET',
 			headers: {
@@ -28,7 +32,7 @@ function settingsChecker(e) {
 
 	if(drink.checked) {
 		console.log('d')
-		url = 'https://cocktails3.p.rapidapi.com/random'
+		FoodOrDrink = true;
 		options = {
 			method: 'GET',
 			headers: {
@@ -40,11 +44,15 @@ function settingsChecker(e) {
 
 saveButton.addEventListener("click", settingsChecker)
 
-searchButton.addEventListener("click", function(){
-	if (url === 'https://cocktails3.p.rapidapi.com/random') {
+searchButton.addEventListener("click", function(e){
+	e.preventDefault()
+	if (FoodOrDrink === true) {
+		url = `https://cocktails3.p.rapidapi.com/search/byname/${search.value}`
+
 		getDrinks()
 
 	} else
+	url = `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch?query=${search.value}&type=main course&addRecipeInformation=true&fillIngredients=true`
 	getFood()
 })
 //Function getDrinks
@@ -57,11 +65,10 @@ function getDrinks() {
 		var i = 0
 		let arrayStatusForFood = true
 		loopArray()
-	
+
 		function loopArray() {
-		
-		ingredient = response.body[0].ingredients[i]
-		newUrl = `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch?includeIngredients=${ingredient}&type=main course`
+		ingredient = response.body[0][0].ingredients[i]
+		newUrl = `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch?includeIngredients=${ingredient}&type=main course&addRecipeInformation=true`
 		if(arrayStatusForFood === true) {
 			getFoodByIngredients(newUrl, options)
 		}
@@ -102,15 +109,17 @@ function getFood() {
 	fetch(url, options)
 	.then(response => response.json())
 	.then(function(response){
+		console.log(url)
 		console.log(response)
 		let ingredient;
 		var i = 0
 		let arrayStatusForDrink = true
 		loopArrayD()
+		
 	
 		function loopArrayD() {
 		
-		ingredient = response.recipes[0].extendedIngredients[i].name
+		ingredient = response.results[0].extendedIngredients[i].name
 		newUrl = `https://cocktails3.p.rapidapi.com/search/byingredient/${ingredient}`
 		if(arrayStatusForDrink === true) {
 			getDrinksByIngredients(newUrl, options)
@@ -124,7 +133,7 @@ function getFood() {
 		.then(function(response) {
 			
 			console.log(response.success)
-			if(response.success === false) {
+			if(response.body[0].length === 0) {
 				i++
 				console.log('h')
 				arrayStatusForDrink = true
