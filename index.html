@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<html style = 'overflow-y:hidden'>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -36,11 +35,14 @@
     <title>Vines and Victuals</title>
 </head>
 <body>
+  
     <header>
-      <img id="goldBorder" src="./assets/images/BigBorder.png">
-      <div class="titletext">
-        <img id="Logo" src="./assets/images/V&V.png">
-      <!-- <h1>Vines And Victuals<main></h1> -->
+      <figure class="image ">
+        <div class="titletext">
+        <img id="goldBorder" src="./assets/images/logo.png">
+      </div>
+</figure>
+
     </header>
   </div>
   
@@ -52,20 +54,20 @@
             <div class="item">
               <img src="assets/images/burger.jpg"
                 srcset="assets/images/burger.jpg"
-                alt="Puff pastry with cream cheese tomatoes basil" class="image-1">
+                alt="burger" class="image-1">
             </div>
             <div class="item"><img src="assets/images/chickenkebabs.jpg"
                 srcset="assets/images/chickenkebabs.jpg"
-                alt="Pork cutlet with lemon cranberries garnish" class="image-2"></div>
+                alt="chickenkebabs" class="image-2"></div>
             <div class="item"><img src="assets/images/friedchicken.jpg"
                 srcset="assets/images/friedchicken.jpg"
-                alt="Pancake with strawberries on top" class="image-3"></div>
+                alt="friedchicken" class="image-3"></div>
             <div class="item"><img src="assets/images/pasta.jpg"
                 srcset="assets/images/pasta.jpg"
-                alt="Pizza topped with cheese tomatoes olives" class="image-4"></div>
+                alt="pasta" class="image-4"></div>
             <div class="item"><img src="assets/images/pizza.jpg"
                 srcset="assets/images/pizza.jpg"
-                alt="Fruit salad with peaches and plums" class="image-5"></div>
+                alt="pizza" class="image-5"></div>
           </div>
         </div>
       </div>
@@ -94,35 +96,30 @@
   </form>
 </div>
 
-  <!-- <div class="control">
-    <input id='search' class="input is-large is-fluid " type="text"  placeholder="What do you feel like eating? ">
-    
-  </div> -->
-  
-  <!-- <div class="control">
-    <a id="searchButton" class="button is-large is-info">
-      Search
-    </a>
-  </div> -->
+
   <div id="modal-js-example" class="modal">
     <div class="modal-background"></div>
   
     <div class="modal-content">
       <div class="box">
-        <form>
+        
           <div class="box" style="border: 2px solid black;">
           <h2><b>Search Criteria</b></h2>
           </div>
+        
+            
+            <form>
           <input type="radio" id="food" name="select" value="food">
           <label for="food">Select to enter your food and get an awesome drink pairing!</label><br>
           <input type="radio" id="drink" name="select" value="drink">
           <label for="drink">Select to enter your drink and get an awesome food pairing!</label><br>
-          <button id="save-button">Save</button>
+          <button id="save-button" class="button is-dark">Save</button>
+        
         </form>
       </div>
     </div>
-  
     <button class="modal-close is-large" aria-label="close"></button>
+   
   </div>
  
   
@@ -134,6 +131,15 @@
 
 
     </main>
+    <footer>
+
+    
+      <figure class="image ">
+        <div class="footertext">
+        <img id="goldBorder" src="assets/images/footerBorder.png">
+      </div>
+</figure>
+    </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
     <script src="assets/js/onready.js"></script>
