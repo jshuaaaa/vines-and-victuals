@@ -99,14 +99,53 @@ function getDrinks() {
 }
 
 function getFood() {
-	console.log('getfood was called')
 	fetch(url, options)
 	.then(response => response.json())
 	.then(function(response){
+		console.log(response)
+		let ingredient;
+		var i = 0
+		let arrayStatusForDrink = true
+		loopArrayD()
 	
-        console.log(response)
+		function loopArrayD() {
+		
+		ingredient = response.recipes[0].extendedIngredients[i].name
+		newUrl = `https://cocktails3.p.rapidapi.com/search/byingredient/${ingredient}`
+		if(arrayStatusForDrink === true) {
+			getDrinksByIngredients(newUrl, options)
+		}
+		
+	}
+
+	function getDrinksByIngredients(newUrl,options) {
+		fetch(newUrl, options)
+		.then(response => response.json())
+		.then(function(response) {
+			
+			console.log(response.success)
+			if(response.success === false) {
+				i++
+				console.log('h')
+				arrayStatusForDrink = true
+				loopArrayD(i)
+				
+			} else
+			console.log(response)
+			arrayStatusForDrink = false
+	
+		}
+	)}
+		options = {
+			method: 'GET',
+			headers: {
+				'X-RapidAPI-Key': 'c36c798c41msh6e4944725bbf051p1c3342jsn7e587c0ecbdc'
+			}
+		}
+		
+		
     })
-	.catch(err => console.error(err));
+	.catch(err => console.error(err))
 
 }
 
