@@ -1,3 +1,8 @@
+html{
+  width: 105%;
+  height: 100%;
+}
+
 
 
 main {
@@ -14,7 +19,7 @@ main {
 }
 .titletext {
     color: white;
-    padding-top: 7vh;
+    padding-top: 15vh;
     font-size: 50px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-style: italic;
@@ -23,14 +28,18 @@ main {
 #goldBorder{
   position: fixed;
   z-index: 0;
+  min-height: 100%;
 }
-#logo{
+#Logo{
   position: relative;
+  right: .2%;
 }
 
 .owl-height {
-    max-height: 35vh;
+  margin-top: 5vh; 
+    max-height: 45vh;
   }
+  
 
   .carousel-item img{
     width: auto;
