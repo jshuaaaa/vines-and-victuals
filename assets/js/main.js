@@ -90,6 +90,29 @@ function getDrinks() {
 			getFoodByIngredients(newUrl, options)
 		}
 		
+		if(arrayStatusForFood === false) {
+			console.log(response.body[0].length)
+			for(var z = 0; z < response.body[0].length; z++) {
+				$('<div>', {
+					id: z
+				}).appendTo('#api-content')
+				$('<h2>',{
+					id: response.body[0][z].name
+				}).appendTo('#' + z).text(response.body[0][z].name)
+				
+				$('<div>', {
+					id: 'ingredientList' + z
+				}).appendTo("#"+z)
+
+				for(var index = 0; index < response.body[0][z].ingredients[z].length; index++) {
+					$('<p>').appendTo('#'+z).text(response.body[0][z].ingredients[index])
+				}
+
+		}
+
+			
+
+			
 	}
 //function getFoodByIngredients
 	function getFoodByIngredients(newUrl,options) {
@@ -107,6 +130,7 @@ function getDrinks() {
 			} else
 			console.log(response)
 			arrayStatusForFood = false
+			loopArray()
 	
 		}
 	)}
@@ -118,8 +142,9 @@ function getDrinks() {
 		}
 		
 		
-    })
-	.catch(err => console.error(err));
+    }
+})
+	.catch(err => console.error(err))
 }
 //Function getFood
 function getFood() {
@@ -140,6 +165,13 @@ function getFood() {
 		newUrl = `https://cocktails3.p.rapidapi.com/search/byingredient/${ingredient}`
 		if(arrayStatusForDrink === true) {
 			getDrinksByIngredients(newUrl, options)
+		}
+		
+		if(arrayStatusForDrink === false) {
+			for(var z = 0; z <response.body[0].length; z++) {
+				$('<h2>').appendTo('#api-content')
+				console.log(z)
+			}
 		}
 		
 	}
