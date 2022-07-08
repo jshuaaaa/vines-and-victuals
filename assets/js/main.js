@@ -52,7 +52,19 @@ $('#searchButton').on("click", move)
 function move(e) {
 	e.preventDefault()
 	localStorage.searchResult = search.value
-	window.location.assign('assets/html/loader.html') 
+
+	if (food.checked) {
+		FoodOrDrink = false
+		window.location.assign('assets/html/loader.html') 
+		
+		//  block of code to be executed if the condition is true
+	  } if(drink.checked) {
+
+		window.location.assign('assets/html/loader2.html') 
+		//  block of code to be executed if the condition is false
+	  }
+
+	
 	
 
 }

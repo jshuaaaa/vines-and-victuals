@@ -1,7 +1,13 @@
+
 html {
     width: 100vw;
-    height: 100%;
+    height: 100vh;
     background-image: radial-gradient(rgb(85, 83, 83), rgb(48, 48, 48));
+}
+footer {
+    position: absolute;
+    height: 0;
+    bottom: 0%;
 }
 
 .homeicon {
