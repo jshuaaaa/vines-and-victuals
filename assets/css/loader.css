@@ -102,6 +102,7 @@ html{
 .loading02 span:nth-child(7) {
     animation-delay: 1.2s;
 }
+
 @keyframes loading02 {
     0% {
         filter: blur(0);
