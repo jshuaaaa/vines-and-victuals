@@ -19,8 +19,9 @@ if (drinkName) {
 
 
 var url5 = `https://cocktails3.p.rapidapi.com/search/byname/${localStorage.searchResult}`
+var url6 = `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch?includeIngredients=${localStorage.searchResult}&type=main course&addRecipeInformation=true`
 
-function getDrinksSingle() {
+function getApiSingle() {
 	fetch(url5, options)
 	.then(response => response.json())
 	.then(function(response){
@@ -34,4 +35,28 @@ function getDrinksSingle() {
     })
 }
 
-getDrinksSingle()
+function getRelatedApi() {
+    fetch(url6, options)
+	.then(response => response.json())
+	.then(function(response){
+        
+
+        for(var i = 0; i < response.results.length; i++) {
+            $('<div>', {
+                id: "food" + i
+            }).appendTo('#related-food')
+            $('<h1>').appendTo('#food'+i).text(response.results[i].title)
+            $('<img>',{
+                src: response.results[i].image
+            }).appendTo('#food'+i)
+
+        }
+    })
+}
+
+
+
+
+
+getApiSingle()
+getRelatedApi()
