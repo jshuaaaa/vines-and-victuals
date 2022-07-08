@@ -46,6 +46,8 @@ saveButton.addEventListener("click", settingsChecker)
 
 searchButton.addEventListener("click", function(e){
 	e.preventDefault()
+	window.location.assign('assets/html/loader.html') 
+
 	if (FoodOrDrink === true) {
 		url = `https://cocktails3.p.rapidapi.com/search/byname/${search.value}`
 
