@@ -10,15 +10,23 @@ footer {
     bottom: 0%;
 }
 
+header {
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+}
+
 .homeicon {
+    display: block;
     position: absolute;
-    top: 8vh;
+    top: 16%;
     left: 33vw;
 }
 
 .bookicon {
+    display: block;
     position: absolute;
-    top: 8vh;
+    top: 16%;
     right: 33vw;
 }
 
@@ -30,3 +38,43 @@ footer {
     color: #fff !important; 
 }
 
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    .fas.fa-bookmark { 
+        font-size: 15px; 
+      }
+      .fa.fa-home {
+          font-size: 15px;
+      } 
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    .fas.fa-bookmark { 
+        font-size: 25px; 
+      }
+      .fa.fa-home {
+          font-size: 25px;
+      }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .fas.fa-bookmark { 
+        font-size: 35px; 
+      }
+      .fa.fa-home {
+          font-size: 35px;
+      }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    .fas.fa-bookmark { 
+        font-size: 45px; 
+      }
+      .fa.fa-home {
+          font-size: 45px;
+      }
+}

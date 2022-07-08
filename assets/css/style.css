@@ -239,15 +239,23 @@ button span:after {
 											  transparent)
 }
 
+header {
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+}
+
 .infoicon {
-  position: absolute;
-  top: 8vh;
-  left: 33vw;
+    display: block;
+    position: absolute;
+    top: 12%;
+    left: 33vw;
 }
 
 .bookicon {
+  display: block;
   position: absolute;
-  top: 8vh;
+  top: 12%;
   right: 33vw;
 }
 
@@ -262,3 +270,43 @@ button span:after {
 .fa.fa-cog:hover {
   color: #D1B000 !important;
 } 
+
+
+@media only screen and (max-width: 600px) {
+  .fas.fa-bookmark { 
+      font-size: 15px; 
+    }
+    .fa.fa-info-circle {
+        font-size: 15px;
+    } 
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  .fas.fa-bookmark { 
+      font-size: 25px; 
+    }
+    .fa.fa-info-circle{
+        font-size: 25px;
+    }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  .fas.fa-bookmark { 
+      font-size: 35px; 
+    }
+    .fa.fa-info-circle {
+        font-size: 35px;
+    }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  .fas.fa-bookmark { 
+      font-size: 45px; 
+    }
+    .fa.fa-info-circle {
+        font-size: 45px;
+    }
+}
