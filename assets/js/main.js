@@ -105,7 +105,7 @@ function getDrinks() {
 				}).appendTo("#"+z)
 
 				for(var index = 0; index < response.body[0][z].ingredients[z].length; index++) {
-					$('<p>').appendTo('#'+z).text(response.body[0][z].ingredients[index])
+					$('<p>').appendTo('#ingredientList'+z).text(response.body[0][z].ingredients[index])
 				}
 
 		}
