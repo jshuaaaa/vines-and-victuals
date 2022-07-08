@@ -50,6 +50,12 @@ body {
   width: 50%;
 }
 
+.owl-carousel.owl-theme {
+  border-top: 4px ridge #D2A63E;
+  border-bottom: 4px ridge #D2A63E;
+
+}
+
   .carousel-item img{
     width: auto;
     height: 245px;
@@ -269,7 +275,7 @@ header {
 }
 
 .fa.fa-cog:hover {
-  color: #D1B000 !important;
+  color: #D2A63E !important;
 } 
 
 
