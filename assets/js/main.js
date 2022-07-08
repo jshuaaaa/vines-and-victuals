@@ -7,6 +7,8 @@ let url = 'https://cocktails3.p.rapidapi.com/random'
 let searchResult
 var page = 'assets/html/results.html' 
 var path = window.location.pathname
+let arrayStatusForFood = true
+let arrayStatusForDrink = true
 options = {
 	method: 'GET',
 	headers: {
@@ -16,7 +18,7 @@ options = {
 // If true calls Drink API
 // If false calls Food API
 
-let FoodOrDrink = true
+
 
 
 
@@ -24,7 +26,7 @@ function settingsChecker(e) {
 	e.preventDefault()
 	if(food.checked) {
 		console.log('e')
-		FoodOrDrink = false
+		localStorage.searchQuery = 'food'
 		options = {
 			method: 'GET',
 			headers: {
@@ -35,7 +37,7 @@ function settingsChecker(e) {
 
 	if(drink.checked) {
 		console.log('d')
-		FoodOrDrink = true;
+		localStorage.searchQuery = 'drink'
 		options = {
 			method: 'GET',
 			headers: {
@@ -55,12 +57,12 @@ function move(e) {
 	e.preventDefault()
 	localStorage.searchResult = search.value
 
-	if (food.checked) {
-		FoodOrDrink = false
+	if (localStorage.searchQuery === 'food') {
+
 		window.location.assign('assets/html/loader.html') 
 		
 		//  block of code to be executed if the condition is true
-	  } if(drink.checked) {
+	  } if(localStorage.searchQuery === 'drink') {
 
 		window.location.assign('assets/html/loader2.html') 
 		//  block of code to be executed if the condition is false
@@ -73,7 +75,7 @@ function move(e) {
 
 	function fetchApi(){
 	
-		if (FoodOrDrink === true) {
+		if (localStorage.searchQuery === 'drink') {
 			url = `https://cocktails3.p.rapidapi.com/search/byname/${localStorage.searchResult}`
 	
 			getDrinks()
@@ -94,45 +96,38 @@ function getDrinks() {
 		console.log(response)
 		let ingredient;
 		var i = 0
-		let arrayStatusForFood = true
+		
+		for(var z = 0; z < response.body[0].length; z++) {
+			$('<a>', {
+				href: './single.html?drink=' + response.body[0][z].name + '=' + z,
+				id: z + 'a'
+			}).appendTo('#api-content')
+			$('<div>', {
+				id: z
+			}).appendTo('#' + z + 'a')
+			$('<h2>',{
+				id: response.body[0][z].name
+			}).appendTo('#' + z).text(response.body[0][z].name)
+			
+			$('<div>', {
+				id: 'ingredientList' + z
+			}).appendTo("#"+z)
+
+			console.log(response.body[0][0].ingredients.length)
+
+			for(var index = 0; index < response.body[0][z].ingredients.length; index++) {
+				$('<p>').appendTo('#ingredientList'+z).text(response.body[0][z].ingredients[index])
+			}
+
 		loopArray()
 
 		function loopArray() {
 		ingredient = response.body[0][0].ingredients[i]
 		newUrl = `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch?includeIngredients=${ingredient}&type=main course&addRecipeInformation=true`
-		if(arrayStatusForFood === true) {
+		if(arrayStatusForFood == true) {
 			getFoodByIngredients(newUrl, options)
 		}
 		
-		if(arrayStatusForFood === false && path.match(page)) {
-			console.log(response.body[0].length)
-			
-				for(var z = 0; z < response.body[0].length; z++) {
-				$('<a>', {
-					href: './single.html?drink=' + response.body[0][z].name + '=' + z,
-					id: z + 'a'
-				}).appendTo('#api-content')
-				$('<div>', {
-					id: z
-				}).appendTo('#' + z + 'a')
-				$('<h2>',{
-					id: response.body[0][z].name
-				}).appendTo('#' + z).text(response.body[0][z].name)
-				
-				$('<div>', {
-					id: 'ingredientList' + z
-				}).appendTo("#"+z)
-
-				console.log(response.body[0][0].ingredients.length)
-
-				for(var index = 0; index < response.body[0][z].ingredients.length; index++) {
-					$('<p>').appendTo('#ingredientList'+z).text(response.body[0][z].ingredients[index])
-			}
-			
-
-		}
-
-			
 
 			
 	}
@@ -151,8 +146,11 @@ function getDrinks() {
 				
 			} else
 			console.log(response)
+		
 			arrayStatusForFood = false
-			loopArray()
+			loopArray(i)
+			
+			
 	
 		}
 	)}
@@ -177,8 +175,35 @@ function getFood() {
 		console.log(response)
 		let ingredient;
 		var i = 0
-		let arrayStatusForDrink = true
+
 		loopArrayD()
+
+		for(var z = 0; z < response.results.length; z++) {
+			console.log(arrayStatusForDrink)
+			$('<a>', {
+				href: './single.html?food=' + response.results[z].title + '=' + z,
+				id: z + 'a'
+			}).appendTo('#api-content')
+			$('<div>', {
+				id: z
+			}).appendTo('#' + z + 'a')
+			$('<h2>',{
+				id: response.results[z].title
+			}).appendTo('#' + z).text(response.results[z].title )
+			
+			$('<div>', {
+				id: 'ingredientList' + z
+			}).appendTo("#"+z)
+			
+			console.log(response.results[z].extendedIngredients.length)
+			for(var index = 0; index < response.results[z].extendedIngredients.length; index++) {
+				$('<p>').appendTo('#ingredientList'+z).text(response.results[z].extendedIngredients[index].name)
+			}
+			
+
+	
+
+	}
 		
 	
 		function loopArrayD() {
@@ -189,12 +214,10 @@ function getFood() {
 			getDrinksByIngredients(newUrl, options)
 		}
 		
-		if(arrayStatusForDrink === false) {
-			for(var z = 0; z <response.body[0].length; z++) {
-				$('<h2>').appendTo('#api-content')
-				console.log(z)
-			}
-		}
+		console.log(response.results.length)
+
+		
+
 		
 	}
 
@@ -203,16 +226,16 @@ function getFood() {
 		.then(response => response.json())
 		.then(function(response) {
 			
-			console.log(response.success)
+			console.log(response.body[0].length)
 			if(response.body[0].length === 0) {
 				i++
 				console.log('h')
-				arrayStatusForDrink = true
 				loopArrayD(i)
 				
-			} else
+			} else if(response.body[0].length > 0)
 			console.log(response)
 			arrayStatusForDrink = false
+				
 	
 		}
 	)}
