@@ -12,6 +12,7 @@ header {
 body {
   background-image: radial-gradient(rgb(85, 83, 83), rgb(48, 48, 48))
 }
+
 .titletext{
     display: flex;
     text-align: center;
