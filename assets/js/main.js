@@ -130,8 +130,6 @@ function getDrinks() {
 		
 
 			
-
-			
 	}
 //function getFoodByIngredients
 	function getFoodByIngredients(newUrl,options) {
