@@ -89,7 +89,7 @@ button {
   width: 70vw;
   padding: 35px;
   margin: -83px auto 0 auto;
-  background-color: #ff7575;
+  background-color: #494747;
   border-radius: 20px;
   box-shadow: 0 10px 40px #ff7c7c, 0 0 0 20px #ffffffeb;
   transform: scale(0.6);
@@ -107,7 +107,7 @@ input[type="text"] {
 }
 
 input[type="text"]::placeholder {
-  color: #e16868;
+  color: #ffffff;
 }
 
 #s-cover {
@@ -247,3 +247,7 @@ button span:after {
 .fa.fa-info-circle:hover {
   color: #fff !important; 
 }
+
+.fa.fa-cog:hover {
+  color: #D1B000 !important;
+} 
