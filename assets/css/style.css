@@ -36,7 +36,18 @@ body {
 .owl-height {
     max-height: 45vh;
   }
-  
+
+  .headerUnderIcon{
+    flex-wrap: wrap;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    bottom: 80px;
+    
+  }
+.headerImage{
+  width: 50%;
+}
 
   .carousel-item img{
     width: auto;
