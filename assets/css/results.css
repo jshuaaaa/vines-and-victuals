@@ -5,21 +5,35 @@ html {
 }
 
 #api-content {
+  padding: 4%;
+  border-radius: 2%;
+  gap: 20px;
+  row-gap: 40px;
   position: relative;
   bottom: 120px;
   /* overflow: scroll; */
   display: flex;
   flex-wrap: wrap;
   max-height: 100vh;
-  border: 1px black solid;
+   border: 5px #ffd700 groove; 
+   
 }
-#api-content > a > div {
-  flex: 0 1 10%;
-  border: 1px solid white;
+
+#api-content > a:hover {
+color: gold;
+}
+#api-content > a {
+  
+  color: whitesmoke;
+  text-align: center;
+  flex: 1 1 20%;
+  /* border: 1px solid rgb(255, 0, 0); */
 }
 
 #api-content > a > div > h2 {
-  font-size: 2em;
+  text-transform: capitalize;
+  text-decoration: underline;
+  font-size: 1.5em;
   color: gold;
 }
 
