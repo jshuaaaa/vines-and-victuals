@@ -5,6 +5,8 @@ const drink = document.getElementById('drink')
 const saveButton = document.getElementById('save-button')
 let url = 'https://cocktails3.p.rapidapi.com/random'
 let searchResult
+var page = 'assets/html/results.html' 
+var path = window.location.pathname
 options = {
 	method: 'GET',
 	headers: {
@@ -102,12 +104,17 @@ function getDrinks() {
 			getFoodByIngredients(newUrl, options)
 		}
 		
-		if(arrayStatusForFood === false) {
+		if(arrayStatusForFood === false && path.match(page)) {
 			console.log(response.body[0].length)
-			for(var z = 0; z < response.body[0].length; z++) {
+			
+				for(var z = 0; z < response.body[0].length; z++) {
+				$('<a>', {
+					href: './single.html?drink=' + response.body[0][z].name + '=' + z,
+					id: z + 'a'
+				}).appendTo('#api-content')
 				$('<div>', {
 					id: z
-				}).appendTo('#api-content')
+				}).appendTo('#' + z + 'a')
 				$('<h2>',{
 					id: response.body[0][z].name
 				}).appendTo('#' + z).text(response.body[0][z].name)
@@ -119,6 +126,7 @@ function getDrinks() {
 				for(var index = 0; index < response.body[0][z].ingredients[z].length; index++) {
 					$('<p>').appendTo('#ingredientList'+z).text(response.body[0][z].ingredients[index])
 				}
+			
 
 		}
 
