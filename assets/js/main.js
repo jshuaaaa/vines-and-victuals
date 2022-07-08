@@ -4,6 +4,7 @@ const food = document.getElementById('food')
 const drink = document.getElementById('drink')
 const saveButton = document.getElementById('save-button')
 let url = 'https://cocktails3.p.rapidapi.com/random'
+let searchResult
 options = {
 	method: 'GET',
 	headers: {
@@ -42,21 +43,35 @@ function settingsChecker(e) {
 	}
 }
 
-saveButton.addEventListener("click", settingsChecker)
 
-searchButton.addEventListener("click", function(e){
+
+$('#save-button').on("click", settingsChecker)
+
+$('#searchButton').on("click", move)
+
+function move(e) {
 	e.preventDefault()
+	localStorage.searchResult = search.value
 	window.location.assign('assets/html/loader.html') 
+	
 
-	if (FoodOrDrink === true) {
-		url = `https://cocktails3.p.rapidapi.com/search/byname/${search.value}`
+}
 
-		getDrinks()
+	function fetchApi(){
+	
+		if (FoodOrDrink === true) {
+			url = `https://cocktails3.p.rapidapi.com/search/byname/${localStorage.searchResult}`
+	
+			getDrinks()
+	
+		} else
+		url = `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch?query=${localStorage.searchResult}&type=main course&addRecipeInformation=true&fillIngredients=true`
+		getFood()
+	
+	
+}
 
-	} else
-	url = `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch?query=${search.value}&type=main course&addRecipeInformation=true&fillIngredients=true`
-	getFood()
-})
+
 //Function getDrinks
 function getDrinks() {
 	fetch(url, options)

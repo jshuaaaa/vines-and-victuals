@@ -7,7 +7,7 @@ function init() {
 
     window.location.assign("./results.html")
     setTimeout(() => (main.style.opacity = 1), 50);
-  }, 5000);
+  }, 3000);
 }
 
 init();
