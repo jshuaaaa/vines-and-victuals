@@ -123,7 +123,9 @@ function getDrinks() {
 					id: 'ingredientList' + z
 				}).appendTo("#"+z)
 
-				for(var index = 0; index < response.body[0][z].ingredients[z].length; index++) {
+				console.log(response.body[0][0].ingredients.length)
+
+				for(var index = 0; index < response.body[0][z].ingredients.length; index++) {
 					$('<p>').appendTo('#ingredientList'+z).text(response.body[0][z].ingredients[index])
 				}
 			
