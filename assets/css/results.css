@@ -3,3 +3,24 @@ html {
     height: 100%;
     background-image: radial-gradient(rgb(85, 83, 83), rgb(48, 48, 48));
 }
+
+.homeicon {
+    position: absolute;
+    top: 8vh;
+    left: 33vw;
+}
+
+.bookicon {
+    position: absolute;
+    top: 8vh;
+    right: 33vw;
+}
+
+.fas.fa-bookmark:hover {
+    color: #fff !important; 
+}
+
+.fa.fa-home:hover {
+    color: #fff !important; 
+}
+

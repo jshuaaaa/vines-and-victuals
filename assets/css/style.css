@@ -227,3 +227,23 @@ button span:after {
 											  transparent,
 											  transparent)
 }
+
+.infoicon {
+  position: absolute;
+  top: 8vh;
+  left: 33vw;
+}
+
+.bookicon {
+  position: absolute;
+  top: 8vh;
+  right: 33vw;
+}
+
+.fas.fa-bookmark:hover {
+  color: #fff !important; 
+}
+
+.fa.fa-info-circle:hover {
+  color: #fff !important; 
+}
