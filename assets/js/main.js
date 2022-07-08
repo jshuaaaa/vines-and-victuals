@@ -7,6 +7,8 @@ let url = 'https://cocktails3.p.rapidapi.com/random'
 let searchResult
 var page = 'assets/html/results.html' 
 var path = window.location.pathname
+let arrayStatusForFood = true
+let arrayStatusForDrink = true
 options = {
 	method: 'GET',
 	headers: {
@@ -94,43 +96,38 @@ function getDrinks() {
 		console.log(response)
 		let ingredient;
 		var i = 0
-		let arrayStatusForFood = true
+		
+		for(var z = 0; z < response.body[0].length; z++) {
+			$('<a>', {
+				href: './single.html?drink=' + response.body[0][z].name + '=' + z,
+				id: z + 'a'
+			}).appendTo('#api-content')
+			$('<div>', {
+				id: z
+			}).appendTo('#' + z + 'a')
+			$('<h2>',{
+				id: response.body[0][z].name
+			}).appendTo('#' + z).text(response.body[0][z].name)
+			
+			$('<div>', {
+				id: 'ingredientList' + z
+			}).appendTo("#"+z)
+
+			console.log(response.body[0][0].ingredients.length)
+
+			for(var index = 0; index < response.body[0][z].ingredients.length; index++) {
+				$('<p>').appendTo('#ingredientList'+z).text(response.body[0][z].ingredients[index])
+			}
+
 		loopArray()
 
 		function loopArray() {
 		ingredient = response.body[0][0].ingredients[i]
 		newUrl = `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch?includeIngredients=${ingredient}&type=main course&addRecipeInformation=true`
-		if(arrayStatusForFood === true) {
+		if(arrayStatusForFood == true) {
 			getFoodByIngredients(newUrl, options)
 		}
 		
-		if(arrayStatusForFood === false && path.match(page)) {
-			console.log(response.body[0].length)
-			
-				for(var z = 0; z < response.body[0].length; z++) {
-				$('<a>', {
-					href: './single.html?drink=' + response.body[0][z].name + '=' + z,
-					id: z + 'a'
-				}).appendTo('#api-content')
-				$('<div>', {
-					id: z
-				}).appendTo('#' + z + 'a')
-				$('<h2>',{
-					id: response.body[0][z].name
-				}).appendTo('#' + z).text(response.body[0][z].name)
-				
-				$('<div>', {
-					id: 'ingredientList' + z
-				}).appendTo("#"+z)
-
-				console.log(response.body[0][0].ingredients.length)
-
-				for(var index = 0; index < response.body[0][z].ingredients.length; index++) {
-					$('<p>').appendTo('#ingredientList'+z).text(response.body[0][z].ingredients[index])
-				}
-			
-
-		}
 
 			
 
@@ -151,8 +148,11 @@ function getDrinks() {
 				
 			} else
 			console.log(response)
+		
 			arrayStatusForFood = false
-			loopArray()
+			loopArray(i)
+			
+			
 	
 		}
 	)}
@@ -177,8 +177,35 @@ function getFood() {
 		console.log(response)
 		let ingredient;
 		var i = 0
-		let arrayStatusForDrink = true
+
 		loopArrayD()
+
+		for(var z = 0; z < response.results.length; z++) {
+			console.log(arrayStatusForDrink)
+			$('<a>', {
+				href: './single.html?food=' + response.results[z].title + '=' + z,
+				id: z + 'a'
+			}).appendTo('#api-content')
+			$('<div>', {
+				id: z
+			}).appendTo('#' + z + 'a')
+			$('<h2>',{
+				id: response.results[z].title
+			}).appendTo('#' + z).text(response.results[z].title )
+			
+			$('<div>', {
+				id: 'ingredientList' + z
+			}).appendTo("#"+z)
+			
+			console.log(response.results[z].extendedIngredients.length)
+			for(var index = 0; index < response.results[z].extendedIngredients.length; index++) {
+				$('<p>').appendTo('#ingredientList'+z).text(response.results[z].extendedIngredients[index].name)
+			}
+			
+
+	
+
+	}
 		
 	
 		function loopArrayD() {
@@ -191,35 +218,8 @@ function getFood() {
 		
 		console.log(response.results.length)
 
-		if(arrayStatusForDrink === false && path.match(page)) {
-			
-			
-			for(var z = 0; z < response.results.length; z++) {
-				console.log(arrayStatusForDrink)
-				$('<a>', {
-					href: './single.html?food=' + response.results[z].title + '=' + z,
-					id: z + 'a'
-				}).appendTo('#api-content')
-				$('<div>', {
-					id: z
-				}).appendTo('#' + z + 'a')
-				$('<h2>',{
-					id: response.results[z].title
-				}).appendTo('#' + z).text(response.results[z].title )
-				
-				$('<div>', {
-					id: 'ingredientList' + z
-				}).appendTo("#"+z)
-				
-				console.log(response.results[z].extendedIngredients.length)
-				for(var index = 0; index < response.results[z].extendedIngredients.length; index++) {
-					$('<p>').appendTo('#ingredientList'+z).text(response.results[z].extendedIngredients[index].name)
-				}
-				
+		
 
-		}
-
-		}
 		
 	}
 
