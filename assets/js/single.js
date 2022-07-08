@@ -37,7 +37,7 @@ function getApiSingleForDrink() {
 		loopArrayForDrink()
 
         function loopArrayForDrink() {
-            ingredient = response.body[0][0].ingredients[i]
+            ingredient = response.body[0][drinkId].ingredients[i]
             newUrl = `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch?includeIngredients=${ingredient}&type=main course&addRecipeInformation=true`
             if(arrayStatusForFood === true) {
                 getFoodByIngredient(newUrl, options)
