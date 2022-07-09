@@ -276,11 +276,6 @@ header {
   color: #fff !important; 
 }
 
-/* .fa.fa-info-circle:target {
-   color: red !important;
-   
-} */
-
 .fa.fa-cog:hover {
   color: #D2A63E !important;
 } 
@@ -289,7 +284,7 @@ header {
   background-image: radial-gradient(rgb(85, 83, 83), rgb(48, 48, 48));
   color: #fff;
   margin-bottom: 20px;
-
+}
 
 
 .box h2{
