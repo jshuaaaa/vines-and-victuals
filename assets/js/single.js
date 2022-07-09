@@ -12,16 +12,9 @@ options = {
 var queryString = document.location.search;
 var drinkName = queryString.split('=')[2];
 var FoodIdSearch = queryString.split('=')[3]
-drinkName = decodeURI(drinkName)
+
 console.log(queryString)
 
-if (drinkName) {
-    $('#title').text(drinkName)
-
-  } else { 
-
-    document.location.replace('./index.html');
-  }
 
   if( queryString.split('=')[1] === 'drink') {
     var url5 = `https://cocktails3.p.rapidapi.com/search/byname/${drinkName}`
@@ -50,6 +43,8 @@ function getApiSingleForDrink() {
 	.then(function(response){
         console.log(response)
         var drinkId = queryString.split('=')[3];
+
+        $('#title').text(response.body[0][0].name)
         
         for(var index = 0; index < response.body[0][0].ingredients[0].length; index++) {
             console.log('runing')
@@ -122,7 +117,7 @@ function getApiSingleForFood() {
 
         console.log(response)
        
-     
+        $('#title').text(response.title)
         for(var x= 0; x < response.extendedIngredients.length; x++) {
             $('<li>').appendTo('#ingredient-list').text(response.extendedIngredients[x].name)
         }
