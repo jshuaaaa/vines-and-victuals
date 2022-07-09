@@ -23,10 +23,10 @@ if (drinkName) {
   }
 
   if( queryString.split('=')[1] === 'drink') {
-    var url5 = `https://cocktails3.p.rapidapi.com/search/byname/${localStorage.searchResult}`
+    var url5 = `https://cocktails3.p.rapidapi.com/search/byname/${drinkName}`
     getApiSingleForDrink()
   } else if(queryString.split('=')[1] === 'food') {
-    var url6 = `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch?includeIngredients=${localStorage.searchResult}&type=main course&addRecipeInformation=true&fillIngredients=true`
+    var url6 = `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch?query=${localStorage.searchResult}&type=main course&addRecipeInformation=true&fillIngredients=true`
     getApiSingleForFood()
     
   }
@@ -48,11 +48,12 @@ function getApiSingleForDrink() {
 	fetch(url5, options)
 	.then(response => response.json())
 	.then(function(response){
+        console.log(response)
         var drinkId = queryString.split('=')[3];
         
-        for(var index = 0; index < response.body[0][drinkId].ingredients[drinkId].length; index++) {
+        for(var index = 0; index < response.body[0][0].ingredients[0].length; index++) {
             console.log('runing')
-            $('<p>').appendTo('#ingredient-list').text(response.body[0][drinkId].ingredients[index])
+            $('<p>').appendTo('#ingredient-list').text(response.body[0][0].ingredients[index])
         }
        
         let ingredient;
@@ -61,7 +62,7 @@ function getApiSingleForDrink() {
 		loopArrayForDrink()
 
         function loopArrayForDrink() {
-            ingredient = response.body[0][drinkId].ingredients[i]
+            ingredient = response.body[0][0].ingredients[i]
             newUrl = `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch?includeIngredients=${ingredient}&type=main course&addRecipeInformation=true`
             if(arrayStatusForFood === true) {
                 getFoodByIngredient(newUrl, options)
