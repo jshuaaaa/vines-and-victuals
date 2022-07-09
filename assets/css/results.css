@@ -28,13 +28,17 @@ html {
 color: gold;
 }
 
+#api-content::-webkit-scrollbar {
+  display: none;
+}
+
 #api-content > a::-webkit-scrollbar {
   display: none;
 }
 
 
 #api-content > a {
-  max-width: fit-content;
+  max-width: 40%;
   border-radius: 4%;
   padding: 2%;
   overflow: scroll;
