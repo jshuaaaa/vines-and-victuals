@@ -116,7 +116,7 @@ function getDrinks() {
 			console.log(response.body[0][0].ingredients.length)
 
 			for(var index = 0; index < response.body[0][z].ingredients.length; index++) {
-				$('<p>').appendTo('#ingredientList'+z).text(response.body[0][z].ingredients[index])
+				$('<li>').appendTo('#ingredientList'+z).text(response.body[0][z].ingredients[index])
 			}
 
 		loopArray()
@@ -197,7 +197,7 @@ function getFood() {
 			
 			console.log(response.results[z].extendedIngredients.length)
 			for(var index = 0; index < response.results[z].extendedIngredients.length; index++) {
-				$('<p>').appendTo('#ingredientList'+z).text(response.results[z].extendedIngredients[index].name)
+				$('<li>').appendTo('#ingredientList'+z).text(response.results[z].extendedIngredients[index].name)
 			}
 			
 
