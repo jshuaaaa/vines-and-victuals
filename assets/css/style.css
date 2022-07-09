@@ -300,6 +300,10 @@ header {
 
 }
 
+.box button:active {
+  background-color: #D2A63E !important; 
+}
+
 
 @media only screen and (max-width: 600px) {
   .fas.fa-bookmark { 
