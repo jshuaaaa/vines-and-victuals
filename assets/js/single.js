@@ -1,10 +1,16 @@
 const ingredientList = document.getElementById('ingredient-list')
+options = {
+	method: 'GET',
+	headers: {
+		'X-RapidAPI-Key': 'c36c798c41msh6e4944725bbf051p1c3342jsn7e587c0ecbdc'
+	}
+}
 
 
 
 
 var queryString = document.location.search;
-var drinkName = queryString.split('=')[1];
+var drinkName = queryString.split('=')[2];
 drinkName = decodeURI(drinkName)
 console.log(queryString)
 
@@ -16,15 +22,29 @@ if (drinkName) {
     document.location.replace('./index.html');
   }
 
-
-var url5 = `https://cocktails3.p.rapidapi.com/search/byname/${localStorage.searchResult}`
-var url6 = `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch?includeIngredients=${localStorage.searchResult}&type=main course&addRecipeInformation=true`
+  if( queryString.split('=')[1] === 'drink') {
+    var url5 = `https://cocktails3.p.rapidapi.com/search/byname/${localStorage.searchResult}`
+    getApiSingleForDrink()
+  }
+    
+    
+    if (drinkName) {
+        $('#title').text(drinkName)
+    
+      } else {
+    
+        document.location.replace('./index.html');
+      }
+    
+    
+    
+    var url6 = `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch?includeIngredients=${localStorage.searchResult}&type=main course&addRecipeInformation=true`
 
 function getApiSingleForDrink() {
 	fetch(url5, options)
 	.then(response => response.json())
 	.then(function(response){
-        var drinkId = queryString.split('=')[2];
+        var drinkId = queryString.split('=')[3];
         
         for(var index = 0; index < response.body[0][drinkId].ingredients[drinkId].length; index++) {
             console.log('runing')
@@ -80,6 +100,3 @@ function getApiSingleForDrink() {
         }
         })
     }
-
-
-getApiSingleForDrink()
