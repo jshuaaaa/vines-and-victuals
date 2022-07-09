@@ -17,7 +17,7 @@ console.log(queryString)
 if (drinkName) {
     $('#title').text(drinkName)
 
-  } else {
+  } else { 
 
     document.location.replace('./index.html');
   }
@@ -25,6 +25,10 @@ if (drinkName) {
   if( queryString.split('=')[1] === 'drink') {
     var url5 = `https://cocktails3.p.rapidapi.com/search/byname/${localStorage.searchResult}`
     getApiSingleForDrink()
+  } else if(queryString.split('=')[1] === 'food') {
+    var url6 = `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch?includeIngredients=${localStorage.searchResult}&type=main course&addRecipeInformation=true&fillIngredients=true`
+    getApiSingleForFood()
+    
   }
     
     
@@ -100,3 +104,67 @@ function getApiSingleForDrink() {
         }
         })
     }
+
+function getApiSingleForFood() {
+    fetch(url6, options)
+	.then(response => response.json())
+	.then(function(response){
+        var FoodId = queryString.split('=')[3]; 
+        let ingredient;
+		var i = 0
+        arrayStatusForDrink = true
+
+        console.log(response)
+     
+        for(var x= 0; x < response.results[FoodId].extendedIngredients.length; x++) {
+            $('<li>').appendTo('#ingredient-list').text(response.results[FoodId].extendedIngredients[x].name)
+        }
+        
+        for(var index = 0; index < response.results[FoodId].analyzedInstructions[0].steps.length; index++) {
+            $('<li>').appendTo('#instructions').text(response.results[FoodId].analyzedInstructions[0].steps[index].step)
+        }
+
+        loopArrayForDrinks()
+
+        function loopArrayForDrinks() {
+		
+            ingredient = response.results[0].extendedIngredients[i].name
+            newUrl = `https://cocktails3.p.rapidapi.com/search/byingredient/${ingredient}`
+            if(arrayStatusForDrink === true) {
+                getDrinksByIngredients(newUrl, options)
+            } 
+            
+          
+          
+        }
+
+        function getDrinksByIngredients(newUrl,options) {
+            fetch(newUrl, options)
+            .then(response => response.json())
+            .then(function(response) {
+              
+                console.log(response)
+                if(response.body[0].length === 0) {
+                    i++
+                    loopArrayForDrinks(i)
+                    
+                } else
+                for(var w = 0; w < response.body[0].length; w++) {
+                $('<div>', {
+                    id: "drink" + w
+                }).appendTo('#related-food')
+                $('<a>', {
+                    id: 'link' + w,
+                    href: './single.html?=drink=' + response.body[0][w].name + '=' + w
+                }).appendTo('#drink' + w)
+                $('<h1>').appendTo('#link'+w).text(response.body[0][w].name)
+                
+                arrayStatusForDrink = false
+            }
+                
+                    
+        
+            }
+        )}
+})
+}
