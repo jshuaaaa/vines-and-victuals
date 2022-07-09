@@ -91,7 +91,7 @@ function getApiSingleForDrink() {
                         $('<h1>').appendTo('#food'+w).text(response.results[w].title)
                         $('<a>', {
                             id: 'link' + w,
-                            href:'./single.html?=food=' + response.results[w].title + '=' + w,
+                            href:'./single.html?=food=' + response.results[w].title + '=' + response.results[w].id,
                         }).appendTo('#food'+w)
                         $('<img>',{
                             href: '',
