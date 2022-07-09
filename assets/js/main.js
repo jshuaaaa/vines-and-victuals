@@ -3,6 +3,9 @@ const searchButton = document.getElementById('searchButton')
 const food = document.getElementById('food')
 const drink = document.getElementById('drink')
 const saveButton = document.getElementById('save-button')
+const iconButton = document.getElementById('icon')
+const hideclass = document.querySelector('.hideclass')
+const closebutton = document.getElementById('closebutton')
 let url = 'https://cocktails3.p.rapidapi.com/random'
 let searchResult
 var page = 'assets/html/results.html' 
@@ -116,7 +119,7 @@ function getDrinks() {
 			console.log(response.body[0][0].ingredients.length)
 
 			for(var index = 0; index < response.body[0][z].ingredients.length; index++) {
-				$('<p>').appendTo('#ingredientList'+z).text(response.body[0][z].ingredients[index])
+				$('<li>').appendTo('#ingredientList'+z).text(response.body[0][z].ingredients[index])
 			}
 
 		loopArray()
@@ -128,8 +131,6 @@ function getDrinks() {
 			getFoodByIngredients(newUrl, options)
 		}
 		
-
-			
 
 			
 	}
@@ -182,6 +183,7 @@ function getFood() {
 			console.log(arrayStatusForDrink)
 			$('<a>', {
 				href: './single.html?=food=' + response.results[z].title + '=' + z,
+
 				id: z + 'a'
 			}).appendTo('#api-content')
 			$('<div>', {
@@ -197,7 +199,7 @@ function getFood() {
 			
 			console.log(response.results[z].extendedIngredients.length)
 			for(var index = 0; index < response.results[z].extendedIngredients.length; index++) {
-				$('<p>').appendTo('#ingredientList'+z).text(response.results[z].extendedIngredients[index].name)
+				$('<li>').appendTo('#ingredientList'+z).text(response.results[z].extendedIngredients[index].name)
 			}
 			
 
@@ -253,4 +255,17 @@ function getFood() {
 }
 
 
+iconButton.addEventListener("click", opendevs)
+
+function opendevs() {
+	hideclass.classList.remove("hideclass")
+
+}
+
+closebutton.addEventListener("click", closedevs)
+
+function closedevs() {
+	hideclass.classList.add("hideclass")
+
+}
 
