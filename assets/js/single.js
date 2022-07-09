@@ -11,6 +11,7 @@ options = {
 
 var queryString = document.location.search;
 var drinkName = queryString.split('=')[2];
+var FoodIdSearch = queryString.split('=')[3]
 drinkName = decodeURI(drinkName)
 console.log(queryString)
 
@@ -25,11 +26,11 @@ if (drinkName) {
   if( queryString.split('=')[1] === 'drink') {
     var url5 = `https://cocktails3.p.rapidapi.com/search/byname/${drinkName}`
     getApiSingleForDrink()
-  } else if(queryString.split('=')[1] === 'food') {
-    var url6 = `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch?query=${localStorage.searchResult}&type=main course&addRecipeInformation=true&fillIngredients=true`
+  } else 
+    var url6 = `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/${FoodIdSearch}/information`
     getApiSingleForFood()
     
-  }
+  
     
     
     if (drinkName) {
@@ -42,7 +43,6 @@ if (drinkName) {
     
     
     
-    var url6 = `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch?includeIngredients=${localStorage.searchResult}&type=main course&addRecipeInformation=true`
 
 function getApiSingleForDrink() {
 	fetch(url5, options)
@@ -114,26 +114,28 @@ function getApiSingleForFood() {
     fetch(url6, options)
 	.then(response => response.json())
 	.then(function(response){
+        
         var FoodId = queryString.split('=')[3]; 
         let ingredient;
 		var i = 0
         arrayStatusForDrink = true
 
         console.log(response)
+       
      
-        for(var x= 0; x < response.results[FoodId].extendedIngredients.length; x++) {
-            $('<li>').appendTo('#ingredient-list').text(response.results[FoodId].extendedIngredients[x].name)
+        for(var x= 0; x < response.extendedIngredients.length; x++) {
+            $('<li>').appendTo('#ingredient-list').text(response.extendedIngredients[x].name)
         }
         
-        for(var index = 0; index < response.results[FoodId].analyzedInstructions[0].steps.length; index++) {
-            $('<li>').appendTo('#instructions').text(response.results[FoodId].analyzedInstructions[0].steps[index].step)
+        for(var index = 0; index < response.analyzedInstructions[0].steps.length; index++) {
+            $('<li>').appendTo('#instructions').text(response.analyzedInstructions[0].steps[index].step)
         }
 
         loopArrayForDrinks()
 
         function loopArrayForDrinks() {
 		
-            ingredient = response.results[0].extendedIngredients[i].name
+            ingredient = response.extendedIngredients[i].name
             newUrl = `https://cocktails3.p.rapidapi.com/search/byingredient/${ingredient}`
             if(arrayStatusForDrink === true) {
                 getDrinksByIngredients(newUrl, options)

@@ -182,7 +182,7 @@ function getFood() {
 		for(var z = 0; z < response.results.length; z++) {
 			console.log(arrayStatusForDrink)
 			$('<a>', {
-				href: './single.html?=food=' + response.results[z].title + '=' + z,
+				href: './single.html?=food=' + response.results[z].title + '=' + response.results[z].id,
 
 				id: z + 'a'
 			}).appendTo('#api-content')
