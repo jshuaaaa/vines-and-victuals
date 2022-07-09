@@ -111,12 +111,16 @@ button {
   margin: -83px auto 0 auto;
   background-color: #494747;
   border-radius: 20px;
-  box-shadow: 0 10px 40px #ff7c7c, 0 0 0 20px #ffffffeb;
+  box-shadow: 0 10px 40px #D2A63E, 0 0 0 20px #D2A63E;
   transform: scale(0.6);
 }
 
 form {
   height: 96px;
+}
+
+input {
+  position: relative;
 }
 
 input[type="text"] {
@@ -127,7 +131,11 @@ input[type="text"] {
 }
 
 input[type="text"]::placeholder {
-  color: #ffffff;
+  color: #ffffff4b;
+  position: absolute;
+  left: 6vw;
+  top: 10px;
+  
 }
 
 #s-cover {
@@ -147,8 +155,8 @@ button {
   position: relative;
   top: -8px;
   left: 0;
-  width: 43px;
-  height: 43px;
+  width: 69px;
+  height: 69px;
   margin-top: 0;
   border-width: 15px;
   border: 15px solid #fff;
