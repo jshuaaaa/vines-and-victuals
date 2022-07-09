@@ -1,30 +1,54 @@
 const ingredientList = document.getElementById('ingredient-list')
+options = {
+	method: 'GET',
+	headers: {
+		'X-RapidAPI-Key': 'c36c798c41msh6e4944725bbf051p1c3342jsn7e587c0ecbdc'
+	}
+}
 
 
 
 
 var queryString = document.location.search;
-var drinkName = queryString.split('=')[1];
+var drinkName = queryString.split('=')[2];
 drinkName = decodeURI(drinkName)
 console.log(queryString)
 
 if (drinkName) {
     $('#title').text(drinkName)
 
-  } else {
+  } else { 
 
     document.location.replace('./index.html');
   }
 
-
-var url5 = `https://cocktails3.p.rapidapi.com/search/byname/${localStorage.searchResult}`
-var url6 = `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch?includeIngredients=${localStorage.searchResult}&type=main course&addRecipeInformation=true`
+  if( queryString.split('=')[1] === 'drink') {
+    var url5 = `https://cocktails3.p.rapidapi.com/search/byname/${localStorage.searchResult}`
+    getApiSingleForDrink()
+  } else if(queryString.split('=')[1] === 'food') {
+    var url6 = `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch?includeIngredients=${localStorage.searchResult}&type=main course&addRecipeInformation=true&fillIngredients=true`
+    getApiSingleForFood()
+    
+  }
+    
+    
+    if (drinkName) {
+        $('#title').text(drinkName)
+    
+      } else {
+    
+        document.location.replace('./index.html');
+      }
+    
+    
+    
+    var url6 = `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch?includeIngredients=${localStorage.searchResult}&type=main course&addRecipeInformation=true`
 
 function getApiSingleForDrink() {
 	fetch(url5, options)
 	.then(response => response.json())
 	.then(function(response){
-        var drinkId = queryString.split('=')[2];
+        var drinkId = queryString.split('=')[3];
         
         for(var index = 0; index < response.body[0][drinkId].ingredients[drinkId].length; index++) {
             console.log('runing')
@@ -64,11 +88,15 @@ function getApiSingleForDrink() {
                             id: "food" + w
                         }).appendTo('#related-food')
                         $('<h1>').appendTo('#food'+w).text(response.results[w].title)
+                        $('<a>', {
+                            id: 'link' + w,
+                            href:'./single.html?=food=' + response.results[w].title + '=' + w,
+                        }).appendTo('#food'+w)
                         $('<img>',{
                             href: '',
                             src: response.results[w].image,
 
-                        }).appendTo('#food'+w)
+                        }).appendTo('#link'+w)
                     }
         
                     loopArrayForDrink()
@@ -81,5 +109,66 @@ function getApiSingleForDrink() {
         })
     }
 
+function getApiSingleForFood() {
+    fetch(url6, options)
+	.then(response => response.json())
+	.then(function(response){
+        var FoodId = queryString.split('=')[3]; 
+        let ingredient;
+		var i = 0
+        arrayStatusForDrink = true
 
-getApiSingleForDrink()
+        console.log(response)
+     
+        for(var x= 0; x < response.results[FoodId].extendedIngredients.length; x++) {
+            $('<li>').appendTo('#ingredient-list').text(response.results[FoodId].extendedIngredients[x].name)
+        }
+        
+        for(var index = 0; index < response.results[FoodId].analyzedInstructions[0].steps.length; index++) {
+            $('<li>').appendTo('#instructions').text(response.results[FoodId].analyzedInstructions[0].steps[index].step)
+        }
+
+        loopArrayForDrinks()
+
+        function loopArrayForDrinks() {
+		
+            ingredient = response.results[0].extendedIngredients[i].name
+            newUrl = `https://cocktails3.p.rapidapi.com/search/byingredient/${ingredient}`
+            if(arrayStatusForDrink === true) {
+                getDrinksByIngredients(newUrl, options)
+            } 
+            
+          
+          
+        }
+
+        function getDrinksByIngredients(newUrl,options) {
+            fetch(newUrl, options)
+            .then(response => response.json())
+            .then(function(response) {
+              
+                console.log(response)
+                if(response.body[0].length === 0) {
+                    i++
+                    loopArrayForDrinks(i)
+                    
+                } else
+                for(var w = 0; w < response.body[0].length; w++) {
+                $('<div>', {
+                    id: "drink" + w
+                }).appendTo('#related-food')
+                $('<a>', {
+                    id: 'link' + w,
+                    href: './single.html?=drink=' + response.body[0][w].name + '=' + w
+                }).appendTo('#drink' + w)
+                $('<h1>').appendTo('#link'+w).text(response.body[0][w].name)
+                
+                arrayStatusForDrink = false
+            }
+                
+                    
+        
+            }
+        )}
+})
+}

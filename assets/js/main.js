@@ -102,7 +102,7 @@ function getDrinks() {
 		
 		for(var z = 0; z < response.body[0].length; z++) {
 			$('<a>', {
-				href: './single.html?drink=' + response.body[0][z].name + '=' + z,
+				href: './single.html?=drink=' + response.body[0][z].name + '=' + z,
 				id: z + 'a'
 			}).appendTo('#api-content')
 			$('<div>', {
@@ -148,8 +148,6 @@ function getDrinks() {
 				loopArray(i)
 				
 			} else
-			console.log(response)
-		
 			arrayStatusForFood = false
 			loopArray(i)
 			
@@ -184,8 +182,8 @@ function getFood() {
 		for(var z = 0; z < response.results.length; z++) {
 			console.log(arrayStatusForDrink)
 			$('<a>', {
-				href: './single.html?food=' + response.results[z].title + '=' + z ,
-				// href: './single.html?food=' + response.results[z].missedIngredients[z].amount+ '=' + z,
+				href: './single.html?=food=' + response.results[z].title + '=' + z,
+
 				id: z + 'a'
 			}).appendTo('#api-content')
 			$('<div>', {

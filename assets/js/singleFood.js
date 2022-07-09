@@ -1,1 +1,0 @@
-const ingredientListFood = document.getElementById('ingredient-list-food')
