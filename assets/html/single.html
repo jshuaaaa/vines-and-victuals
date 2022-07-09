@@ -31,6 +31,37 @@
     <title>Vines and Victuals</title>
 </head>
 <body>
+<div id="preloader"> <section>
+            <div class="loading loading02">
+              <span>C</span>
+              <span>R</span>
+              <span>A</span>
+              <span>F</span>
+              <span>T</span>
+              <span>I</span>
+              <span>N</span>
+              <span>G</span>
+              <span><br></span> 
+              <span><br></span> 
+              <span><br></span> 
+              <span><br></span> 
+              <span>Y</span>
+              <span>O</span>
+              <span>U</span>
+              <span>R</span>
+              <span><br></span> 
+              <span><br></span> 
+              <span><br></span> 
+              <span><br></span> 
+              <span>D</span>
+              <span>U</span>
+              <span>O</span>
+            </div>
+          </section>
+    
+        <span class="loadicon"></span>
+      </div>
+
   
   <header>
     <figure class="image ">
@@ -72,5 +103,19 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
     <script src="../js/single.js"></script>
+    <script>
+      var loader = document.getElementById("preloader");
+
+     
+      window.addEventListener("load", setTimeout(showdata, 6000))
+      
+
+
+      function showdata() {
+        loader.style.display  = "none"
+      }
+       
+
+    </script>
 </body>
 </html> 
