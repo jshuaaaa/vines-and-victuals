@@ -12,6 +12,12 @@ var page = 'assets/html/results.html'
 var path = window.location.pathname
 let arrayStatusForFood = true
 let arrayStatusForDrink = true
+var options = {
+	method: 'GET',
+	headers: {
+		'X-RapidAPI-Key': 'c36c798c41msh6e4944725bbf051p1c3342jsn7e587c0ecbdc'
+	}
+}
 
 
 
@@ -25,12 +31,7 @@ if (localStorage.searchQuery === 'drink') {
 
 
 
-options = {
-	method: 'GET',
-	headers: {
-		'X-RapidAPI-Key': 'c36c798c41msh6e4944725bbf051p1c3342jsn7e587c0ecbdc'
-	}
-}
+
 // If true calls Drink API
 // If false calls Food API
 
