@@ -19,6 +19,12 @@ if (localStorage.searchQuery === undefined) {
 	localStorage.searchQuery = 'food'
 }
 
+if (localStorage.searchQuery === 'drink') {
+	search.setAttribute('placeholder', 'What do you want to drink?')
+}
+
+
+
 options = {
 	method: 'GET',
 	headers: {
@@ -55,6 +61,11 @@ function settingsChecker(e) {
 			}
 		}
 	}
+
+	if (localStorage.searchQuery === 'drink') {
+		search.setAttribute('placeholder', 'What do you want to drink?')
+	}
+	
 }
 
 
