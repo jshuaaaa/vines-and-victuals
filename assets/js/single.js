@@ -6,6 +6,7 @@ options = {
 	}
 }
 var title
+var image
 
 
 
@@ -33,6 +34,7 @@ function getApiSingleForDrink() {
 	.then(function(response){
         console.log(response)
 
+        document.getElementById('instructions').setAttribute('style', 'display:none;')
         title = response.body[0][0].name
         console.log(title)
         $('#title').text(response.body[0][0].name)
@@ -41,6 +43,10 @@ function getApiSingleForDrink() {
             console.log('runing')
             $('<p>').appendTo('#ingredient-list').text(response.body[0][0].ingredients[index])
         }
+
+        $('<img>', {
+            src: 'https://cdn.shopify.com/s/files/1/0545/8562/2725/products/BottlesPlaceHolder-01_d462b161-b14c-4a1a-b209-ec56b3300fbc.png?v=1647552930'
+        }).appendTo('#ingredient-list')
        
         let ingredient;
 		var i = 0
@@ -109,6 +115,7 @@ function getApiSingleForFood() {
 
         console.log(response)
        title = response.title
+       image = response.image
         $('#title').text(response.title)
         for(var x= 0; x < response.extendedIngredients.length; x++) {
             $('<li>').appendTo('#ingredient-list').text(response.extendedIngredients[x].name)
@@ -117,6 +124,10 @@ function getApiSingleForFood() {
         for(var index = 0; index < response.analyzedInstructions[0].steps.length; index++) {
             $('<li>').appendTo('#instructions').text(response.analyzedInstructions[0].steps[index].step)
         }
+
+        $('<img>', {
+            src: image
+        }).appendTo('#instructions')
 
         loopArrayForDrinks()
 
