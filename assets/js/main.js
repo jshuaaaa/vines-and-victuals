@@ -25,11 +25,6 @@ if (localStorage.searchQuery === undefined) {
 	localStorage.searchQuery = 'food'
 }
 
-if (localStorage.searchQuery === 'drink') {
-	search.setAttribute('placeholder', 'What do you want to drink?')
-}
-
-
 
 
 // If true calls Drink API
@@ -44,6 +39,7 @@ function settingsChecker(e) {
 	if(food.checked) {
 		console.log('e')
 		localStorage.searchQuery = 'food'
+		search.setAttribute('placeholder', 'What do you want to eat?')
 		options = {
 			method: 'GET',
 			headers: {
@@ -55,6 +51,7 @@ function settingsChecker(e) {
 	if(drink.checked) {
 		console.log('d')
 		localStorage.searchQuery = 'drink'
+		search.setAttribute('placeholder', 'What do you want to drink?')
 		options = {
 			method: 'GET',
 			headers: {
