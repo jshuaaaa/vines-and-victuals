@@ -100,7 +100,7 @@ function getApiSingleForDrink() {
 
         }
         })
-        .catch($('#title').text("Sorry we cant get this data right now!"))
+        .catch($('#title').text("Sorry we cant get this data right now!"),$('#related').text(''))
     }
 
 function getApiSingleForFood() {
@@ -173,7 +173,7 @@ function getApiSingleForFood() {
         )}
 
     })
-    .catch($('#title').text("Sorry we cant get this data right now!"))
+    .catch($('#title').text("Sorry we cant get this data right now!"),$('#related').text(''))
 }
 
 var saveResult = document.getElementById('save-result')
