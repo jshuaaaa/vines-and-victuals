@@ -1,6 +1,3 @@
 
-
 fetchApi()
 
-
-console.log('d')
