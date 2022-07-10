@@ -165,7 +165,7 @@ function getDrinks() {
 		
     }
 })
-	.catch(err => console.error(err))
+.catch(err => $('#api-content').text("Sorry we cant get this data right now!"))
 }
 //Function getFood
 function getFood() {
@@ -251,9 +251,10 @@ function getFood() {
 		
 		
     })
-	.catch(err => console.error(err))
+	.catch(err => $('#api-content').text("Sorry we cant get this data right now!"))
 
 }
+
 
 
 iconButton.addEventListener("click", opendevs)
@@ -269,4 +270,3 @@ function closedevs() {
 	hideclass.classList.add("hideclass")
 
 }
-

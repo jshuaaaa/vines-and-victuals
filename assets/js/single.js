@@ -12,10 +12,7 @@ options = {
 var queryString = document.location.search;
 var drinkName = queryString.split('=')[2];
 var FoodIdSearch = queryString.split('=')[3]
-
-console.log(queryString)
-
-
+console.log(drinkName)
   if( queryString.split('=')[1] === 'drink') {
     var url5 = `https://cocktails3.p.rapidapi.com/search/byname/${drinkName}`
     getApiSingleForDrink()
@@ -26,15 +23,6 @@ console.log(queryString)
   
     
     
-    if (drinkName) {
-        $('#title').text(drinkName)
-    
-      } else {
-    
-        document.location.replace('./index.html');
-      }
-    
-    
     
 
 function getApiSingleForDrink() {
@@ -42,7 +30,7 @@ function getApiSingleForDrink() {
 	.then(response => response.json())
 	.then(function(response){
         console.log(response)
-        var drinkId = queryString.split('=')[3];
+
 
         $('#title').text(response.body[0][0].name)
         
@@ -103,6 +91,7 @@ function getApiSingleForDrink() {
 
         }
         })
+        .catch($('#title').text("Sorry we cant get this data right now!"))
     }
 
 function getApiSingleForFood() {
@@ -168,5 +157,8 @@ function getApiSingleForFood() {
         
             }
         )}
-})
+
+    })
+    .catch($('#title').text("Sorry we cant get this data right now!"))
 }
+
