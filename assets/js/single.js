@@ -5,11 +5,13 @@ options = {
 		'X-RapidAPI-Key': 'c36c798c41msh6e4944725bbf051p1c3342jsn7e587c0ecbdc'
 	}
 }
+var drink = []
 
 
 
 
 var queryString = document.location.search;
+console.log(queryString)
 var drinkName = queryString.split('=')[2];
 var FoodIdSearch = queryString.split('=')[3]
 console.log(drinkName)
@@ -161,4 +163,36 @@ function getApiSingleForFood() {
     })
     .catch($('#title').text("Sorry we cant get this data right now!"))
 }
+
+var saveResult = document.getElementById('save-result')
+function storeData(e) {
+    e.preventDefault()
+    let storedRecipe = localStorage.getItem("storedRecipe") || '[]';
+    if(saveResult.checked) {
+        
+    storedRecipe = JSON.parse(storedRecipe)
+    storedRecipe.push(queryString)
+    localStorage.setItem("storedRecipe", JSON.stringify(storedRecipe))
+    
+    } 
+    let storedRecipeData = JSON.parse(storedRecipe)
+    if(saveResult.checked === false) {
+        console.log(storedRecipeData[0])
+        console.log('g')
+        for(var i = 0; i < storedRecipeData.length; i++) {
+            if(storedRecipeData[i] === queryString) {
+                delete storedRecipeData[i]
+                localStorage.storedRecipe = JSON.stringify(storedRecipeData)
+                
+            }
+            
+        }
+    }
+
+}
+
+saveResult.addEventListener('change', storeData)
+    
+    
+    
 
