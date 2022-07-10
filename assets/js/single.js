@@ -100,7 +100,7 @@ function getApiSingleForDrink() {
 
         }
         })
-        .catch($('#title').text("Sorry we cant get this data right now!"))
+        .catch($('#title').text("Sorry we cant get this data right now!"),$('#related').text(''))
     }
 
 function getApiSingleForFood() {
@@ -118,7 +118,7 @@ function getApiSingleForFood() {
        image = response.image
         $('#title').text(response.title)
         for(var x= 0; x < response.extendedIngredients.length; x++) {
-            $('<li>').appendTo('#ingredient-list').text(response.extendedIngredients[x].name)
+            $('<li>').appendTo('#ingredient-list').text(response.extendedIngredients[x].original)
         }
         
         for(var index = 0; index < response.analyzedInstructions[0].steps.length; index++) {
@@ -173,7 +173,7 @@ function getApiSingleForFood() {
         )}
 
     })
-    .catch($('#title').text("Sorry we cant get this data right now!"))
+    .catch($('#title').text("Sorry we cant get this data right now!"),$('#related').text(''))
 }
 
 var saveResult = document.getElementById('save-result')

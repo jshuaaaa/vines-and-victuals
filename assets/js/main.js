@@ -216,7 +216,7 @@ function getFood() {
 			
 			console.log(response.results[z].extendedIngredients.length)
 			for(var index = 0; index < response.results[z].extendedIngredients.length; index++) {
-				$('<li>').appendTo('#ingredientList'+z).text(response.results[z].extendedIngredients[index].name)
+				$('<li>').appendTo('#ingredientList'+z).text(response.results[z].extendedIngredients[index].original)
 			}
 			
 
