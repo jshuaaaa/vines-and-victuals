@@ -53,25 +53,28 @@ header + .headerOne > h1 {
 
 #related-food {
   width: 100%;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: auto;
-  gap: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 55px;
+  flex-wrap: wrap;
 }
 #related-food > div {
   text-align: center;
-  display: flex;
-  flex-direction: column;
-  max-width: 80%;
-  /* border: white 1px solid; */
+  flex: 1 1 30%;
+  flex-wrap: wrap;
 }
+
 #related-food > div > h1 {
-  padding-bottom: 5%;
-  color: whitesmoke;
+ position: relative;
+  text-align: center;
+color: whitesmoke;
+;
 }
-#related-food > div > h1 + img {
-  border: 8px groove gold;
+
+#related-food > div > h1 + a > img {
+  border: 5px groove gold;
 }
+
 
 #preloader {
   background-image: radial-gradient(rgb(85, 83, 83), rgb(48, 48, 48));
