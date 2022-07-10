@@ -12,6 +12,13 @@ var page = 'assets/html/results.html'
 var path = window.location.pathname
 let arrayStatusForFood = true
 let arrayStatusForDrink = true
+
+
+
+if (localStorage.searchQuery === undefined) {
+	localStorage.searchQuery = 'food'
+}
+
 options = {
 	method: 'GET',
 	headers: {
