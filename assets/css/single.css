@@ -60,6 +60,8 @@ header + .headerOne > h1 {
   justify-content: center;
   gap: 55px;
   flex-wrap: wrap;
+  max-height: 60vh;
+  overflow: scroll;
 }
 #related-food > div {
   text-align: center;
@@ -113,6 +115,8 @@ header + .headerOne > h1 {
   max-width: 50%;
   border: 5px groove gold;
   border-radius: 5%;
+  max-height: 50vh;
+  overflow: scroll;
 }
 
 #instructions > h2 {
@@ -120,12 +124,15 @@ header + .headerOne > h1 {
   color: gold;
   text-transform: capitalize;
   text-decoration: underline;
-  padding: 10%;
+  padding: 5%;
 }
 
 #instructions > li {
   padding: .5%;
-  list-style: none;
+  list-style:inside;
+  max-width: 50%;
+  text-align: center;
+  margin: auto;
 }
 
  #preloader {
