@@ -5,7 +5,7 @@ options = {
 		'X-RapidAPI-Key': 'c36c798c41msh6e4944725bbf051p1c3342jsn7e587c0ecbdc'
 	}
 }
-var drink = []
+var title
 
 
 
@@ -33,7 +33,8 @@ function getApiSingleForDrink() {
 	.then(function(response){
         console.log(response)
 
-
+        title = response.body[0][0].name
+        console.log(title)
         $('#title').text(response.body[0][0].name)
         
         for(var index = 0; index < response.body[0][0].ingredients[0].length; index++) {
@@ -107,7 +108,7 @@ function getApiSingleForFood() {
         arrayStatusForDrink = true
 
         console.log(response)
-       
+       title = response.title
         $('#title').text(response.title)
         for(var x= 0; x < response.extendedIngredients.length; x++) {
             $('<li>').appendTo('#ingredient-list').text(response.extendedIngredients[x].name)
@@ -167,31 +168,26 @@ function getApiSingleForFood() {
 var saveResult = document.getElementById('save-result')
 function storeData(e) {
     e.preventDefault()
-    let storedRecipe = localStorage.getItem("storedRecipe") || '[]';
-    if(saveResult.checked) {
-        
-    storedRecipe = JSON.parse(storedRecipe)
-    storedRecipe.push(queryString)
-    localStorage.setItem("storedRecipe", JSON.stringify(storedRecipe))
-    
-    } 
-    let storedRecipeData = JSON.parse(storedRecipe)
-    if(saveResult.checked === false) {
-        console.log(storedRecipeData[0])
-        console.log('g')
-        for(var i = 0; i < storedRecipeData.length; i++) {
-            if(storedRecipeData[i] === queryString) {
-                delete storedRecipeData[i]
-                localStorage.storedRecipe = JSON.stringify(storedRecipeData)
-                
-            }
-            
-        }
+    var savedData = {
+        url: queryString,
+        name: title
     }
 
+    let storedRecipe = localStorage.getItem("storedRecipe") || '[]';
+    
+        
+    storedRecipe = JSON.parse(storedRecipe)
+    storedRecipe.push(savedData)
+    localStorage.setItem("storedRecipe", JSON.stringify(storedRecipe))
+    
+
+    saveResult.setAttribute('style', 'display:none;')
+   
+    
+    
 }
 
-saveResult.addEventListener('change', storeData)
+saveResult.addEventListener('click', storeData)
     
     
     
