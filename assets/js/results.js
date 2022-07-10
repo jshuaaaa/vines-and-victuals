@@ -3,3 +3,4 @@
 fetchApi()
 
 
+console.log('d')
