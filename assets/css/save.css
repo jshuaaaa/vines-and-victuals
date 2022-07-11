@@ -1,3 +1,7 @@
+html::-webkit-scrollbar {
+  display: none;
+  }
+
 html {
   width: 100vw;
   height: 100vh;
@@ -43,46 +47,58 @@ header + h1 {
   text-align: center;
   text-transform: capitalize;
   text-decoration: underline;
-  font-size: 5rem;
+  font-size: 2.5rem;
 }
 
 #stored::-webkit-scrollbar {
   display: none;
 }
-
 #stored {
+  border: gold .5px solid;
+  border-radius: 50px;
+  margin: auto;
   margin-top: 5%;
   text-align: center;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10%;
-  row-gap: 50%;
+  display: grid;
+  grid-template-columns: repeat(3, 2fr);
+  max-width: 80vw;
   overflow: scroll;
   max-height: 65vh;
 }
 #stored > a {
+  justify-content: center;
+  flex-direction: column;
   flex: 1 1 20%;
   margin-bottom: 8%;
- 
- 
 }
 
-#stored > a > h2 {
-  font-size: 3rem;
+#stored > a > img {
+  align-items: center;
+  margin: auto;
+  padding-bottom: 10px;
+  position: relative;
+  height: 300px;
+  width: 350px;
+  border-radius: 10%;
 }
-#stored a,
-a:hover,
-a:focus,
-a:active {
-  text-decoration: none;
+
+#stored h2,
+h2:hover,
+h2:focus,
+h2:active {
+  text-decoration: underline;
   color: gold;
   text-align: center;
   text-transform: capitalize;
-  text-decoration: underline;
-  font-size: 5rem;
+  padding-bottom: 2%;
+  font-size: 2rem;
 }
 
 #stored button {
+  z-index: 1;
+  margin: auto;
+  position: relative;
+  max-width: 50%;
   border-radius: 8%;
   background-color: #000000;
   border: 2px red solid;
@@ -90,11 +106,8 @@ a:active {
   padding: 16px 32px;
   text-align: center;
   text-decoration: none;
-  display: inline-block;
+  display: block;
   font-size: 16px;
-  margin: 4px 2px;
-  transition-duration: 0.4s;
-  cursor: pointer;
 }
 
 #stored button:hover {
