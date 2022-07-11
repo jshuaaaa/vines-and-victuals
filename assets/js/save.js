@@ -19,8 +19,8 @@ for( var i=0 ; i < storedRecipe.length ; i++){
     
     $('<button>', {
         id: 'button' + i
-    }).appendTo('#' + i)
 
+    }).appendTo('#' + i).text("Remove")
 
 }  
 }
