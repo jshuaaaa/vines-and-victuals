@@ -25,7 +25,9 @@ if (localStorage.searchQuery === undefined) {
 	localStorage.searchQuery = 'food'
 }
 
-
+if(localStorage.searchQuery === 'food') {
+	search.setAttribute('placeholder', 'What do you want to eat?')
+} else search.setAttribute('placeholder', 'What do you want to drink?')
 
 // If true calls Drink API
 // If false calls Food API
