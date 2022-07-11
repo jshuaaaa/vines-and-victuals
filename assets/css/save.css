@@ -1,86 +1,142 @@
 html {
-    width: 100vw;
-    height: 100vh;
-    background-image: radial-gradient(rgb(85, 83, 83), rgb(48, 48, 48));
+  width: 100vw;
+  height: 100vh;
+  background-image: radial-gradient(rgb(85, 83, 83), rgb(48, 48, 48));
+}
+
+footer {
+  position: absolute;
+  height: 0;
+  bottom: 0%;
+}
+
+header {
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+.homeicon {
+  display: block;
+  position: absolute;
+  top: 16%;
+  left: 33vw;
+}
+
+.bookicon {
+  display: block;
+  position: absolute;
+  top: 16%;
+  right: 33vw;
+}
+
+.fas.fa-bookmark:hover {
+  color: #fff !important;
+}
+
+.fa.fa-home:hover {
+  color: #fff !important;
+}
+
+header + h1 {
+  color: gold;
+  text-align: center;
+  text-transform: capitalize;
+  text-decoration: underline;
+  font-size: 5rem;
+}
+
+#stored::-webkit-scrollbar {
+  display: none;
+}
+
+#stored {
+  margin-top: 5%;
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10%;
+  row-gap: 50%;
+  overflow: scroll;
+  max-height: 65vh;
+}
+#stored > a {
+  flex: 1 1 20%;
+  margin-bottom: 8%;
+ 
+ 
+}
+
+#stored > a > h2 {
+  font-size: 3rem;
+}
+#stored a,
+a:hover,
+a:focus,
+a:active {
+  text-decoration: none;
+  color: gold;
+  text-align: center;
+  text-transform: capitalize;
+  text-decoration: underline;
+  font-size: 5rem;
+}
+
+#stored button {
+  border-radius: 8%;
+  background-color: #000000;
+  border: 2px red solid;
+  color: rgb(255, 0, 0);
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+#stored button:hover {
+  box-shadow: 1px 1px 4px 4px rgb(232, 77, 77);
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .fas.fa-bookmark {
+    font-size: 15px;
   }
-  
-  
-  footer {
-    position: absolute;
-    height: 0;
-    bottom: 0%;
+  .fa.fa-home {
+    font-size: 15px;
   }
-  
-  header {
-    display: flex;
-    flex-wrap: wrap;
-    position: relative;
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  .fas.fa-bookmark {
+    font-size: 25px;
   }
-  
-  .homeicon {
-    display: block;
-    position: absolute;
-    top: 16%;
-    left: 33vw;
+  .fa.fa-home {
+    font-size: 25px;
   }
-  
-  .bookicon {
-    display: block;
-    position: absolute;
-    top: 16%;
-    right: 33vw;
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  .fas.fa-bookmark {
+    font-size: 35px;
   }
-  
-  .fas.fa-bookmark:hover {
-    color: #fff !important;
+  .fa.fa-home {
+    font-size: 35px;
   }
-  
-  .fa.fa-home:hover {
-    color: #fff !important;
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  .fas.fa-bookmark {
+    font-size: 45px;
   }
-  
-  
-  
-  
-  
-  
-  /* Extra small devices (phones, 600px and down) */
-  @media only screen and (max-width: 600px) {
-    .fas.fa-bookmark {
-      font-size: 15px;
-    }
-    .fa.fa-home {
-      font-size: 15px;
-    }
+  .fa.fa-home {
+    font-size: 45px;
   }
-  
-  /* Small devices (portrait tablets and large phones, 600px and up) */
-  @media only screen and (min-width: 600px) {
-    .fas.fa-bookmark {
-      font-size: 25px;
-    }
-    .fa.fa-home {
-      font-size: 25px;
-    }
-  }
-  
-  /* Medium devices (landscape tablets, 768px and up) */
-  @media only screen and (min-width: 768px) {
-    .fas.fa-bookmark {
-      font-size: 35px;
-    }
-    .fa.fa-home {
-      font-size: 35px;
-    }
-  }
-  
-  /* Large devices (laptops/desktops, 992px and up) */
-  @media only screen and (min-width: 992px) {
-    .fas.fa-bookmark {
-      font-size: 45px;
-    }
-    .fa.fa-home {
-      font-size: 45px;
-    }
-  }
-  
+}
