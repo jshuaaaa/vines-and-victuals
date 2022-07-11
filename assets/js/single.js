@@ -5,6 +5,15 @@ options = {
 		'X-RapidAPI-Key': 'c36c798c41msh6e4944725bbf051p1c3342jsn7e587c0ecbdc'
 	}
 }
+
+options2 = {
+    method: 'GET',
+    params: {q: drinkName, pageNumber: '1', pageSize: '10', autoCorrect: 'true'},
+    headers: {
+      'X-RapidAPI-Key': '6b2fad0820mshbfe61d8a053e2f6p1cd344jsn99b46c16cb15',
+      'X-RapidAPI-Host': 'contextualwebsearch-websearch-v1.p.rapidapi.com'
+    }
+  };
 var title
 var image
 
@@ -19,13 +28,26 @@ console.log(drinkName)
   if( queryString.split('=')[1] === 'drink') {
     var url5 = `https://cocktails3.p.rapidapi.com/search/byname/${drinkName}`
     getApiSingleForDrink()
+    var url9 = `https://contextualwebsearch-websearch-v1.p.rapidapi.com/api/Search/ImageSearchAPI?q=${drinkName}+drink&pageNumber=1&pageSize=10&autoCorrect=true`
+    getApiDrinkImage()
   } else 
     var url6 = `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/${FoodIdSearch}/information`
     getApiSingleForFood()
     
   
+    function getApiDrinkImage() {
+        fetch(url9, options2)
+        .then(response => response.json())
+        .then(function(response){
+            console.log(response)
+            $('<img>', {
+                src: response.value[0].thumbnail
+            }).appendTo('#ingredient-list')
+        
+            
     
-    
+            
+    })}
     
 
 function getApiSingleForDrink() {
@@ -44,9 +66,6 @@ function getApiSingleForDrink() {
             $('<p>').appendTo('#ingredient-list').text(response.body[0][0].ingredients[index])
         }
 
-        $('<img>', {
-            src: 'https://cdn.shopify.com/s/files/1/0545/8562/2725/products/BottlesPlaceHolder-01_d462b161-b14c-4a1a-b209-ec56b3300fbc.png?v=1647552930'
-        }).appendTo('#ingredient-list')
        
         let ingredient;
 		var i = 0
