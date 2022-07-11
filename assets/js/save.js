@@ -16,14 +16,16 @@ for( var i=0 ; i < storedRecipe.length ; i++){
     $('<button>', {
         id: 'button' + i
     }).appendTo('#' + i)
+
 }  
 }
 
 stored.addEventListener("click", function(event) {
     var element = event.target;
-    event.preventDefault()
-    event.stopPropagation()
+
     if (element.matches("button") === true) {
+        event.stopPropagation()
+        event.preventDefault()
       var index = element.parentElement.getAttribute("id");
       storedRecipe.splice(index, 1);
       localStorage.storedRecipe = JSON.stringify(storedRecipe)
