@@ -39,12 +39,13 @@ console.log(drinkName)
         fetch(url9, options2)
         .then(response => response.json())
         .then(function(response){
+            image = response.value[0].thumbnail
             console.log(response)
             $('<img>', {
                 src: response.value[0].thumbnail
             }).appendTo('#ingredient-list')
         
-            
+           
     
             
     })}
@@ -200,7 +201,8 @@ function storeData(e) {
     e.preventDefault()
     var savedData = {
         url: queryString,
-        name: title
+        name: title, 
+        img: image
     }
 
     let storedRecipe = localStorage.getItem("storedRecipe") || '[]';

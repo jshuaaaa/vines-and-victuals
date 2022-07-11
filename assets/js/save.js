@@ -12,10 +12,15 @@ for( var i=0 ; i < storedRecipe.length ; i++){
     
     $('<h2>', {
     }).text(storedRecipe[i].name).appendTo('#'+i)
+
+    $('<img>', {
+        src: storedRecipe[i].img
+    }).appendTo('#'+i)
     
     $('<button>', {
         id: 'button' + i
     }).appendTo('#' + i)
+
 
 }  
 }
