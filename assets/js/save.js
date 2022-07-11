@@ -23,7 +23,6 @@ stored.addEventListener("click", function(event) {
     var element = event.target;
     event.preventDefault()
     event.stopPropagation()
-    // TODO: Describe the functionality of the following `if` statement.
     if (element.matches("button") === true) {
       var index = element.parentElement.getAttribute("id");
       storedRecipe.splice(index, 1);
