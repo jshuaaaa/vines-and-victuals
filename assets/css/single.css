@@ -225,7 +225,7 @@ display: none;
   justify-content: center;
   align-items: center;
 
-  animation: loading02 2.2s infinite alternate;
+  animation: loading02 2.3s infinite alternate;
   padding: 1px;
 }
 .loading02 span:nth-child(2) {
@@ -293,6 +293,9 @@ display: none;
 }
 .loading02 span:nth-child(23) {
   animation-delay: 2.2s;
+}
+.loading02 span:nth-child(24) {
+  animation-delay: 2.3s;
 }
 
 @keyframes loading02 {

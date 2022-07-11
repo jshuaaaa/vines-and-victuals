@@ -12,18 +12,25 @@ for( var i=0 ; i < storedRecipe.length ; i++){
     
     $('<h2>', {
     }).text(storedRecipe[i].name).appendTo('#'+i)
+
+    $('<img>', {
+        src: storedRecipe[i].img
+    }).appendTo('#'+i)
     
     $('<button>', {
         id: 'button' + i
+
     }).appendTo('#' + i).text("Remove")
+
 }  
 }
 
 stored.addEventListener("click", function(event) {
     var element = event.target;
-    event.preventDefault()
-    event.stopPropagation()
+
     if (element.matches("button") === true) {
+        event.stopPropagation()
+        event.preventDefault()
       var index = element.parentElement.getAttribute("id");
       storedRecipe.splice(index, 1);
       localStorage.storedRecipe = JSON.stringify(storedRecipe)
