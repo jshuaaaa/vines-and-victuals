@@ -17,7 +17,7 @@ options2 = {
     }
   };
 var title
-var image
+var image = 'https://www.ohlq.com/ui/dist/assets/toolkit/images/product/no-product-image.png'
 
 
 
@@ -30,8 +30,6 @@ console.log(drinkName)
   if( queryString.split('=')[1] === 'drink') {
     var url5 = `https://cocktails3.p.rapidapi.com/search/byname/${drinkName}`
     getApiSingleForDrink()
-    var url9 = `https://contextualwebsearch-websearch-v1.p.rapidapi.com/api/Search/ImageSearchAPI?q=${drinkName}+drink&pageNumber=1&pageSize=10&autoCorrect=true`
-    getApiDrinkImage()
   } else 
     var url6 = `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/${FoodIdSearch}/information`
     getApiSingleForFood()
