@@ -26,8 +26,8 @@ if (localStorage.searchQuery === undefined) {
 }
 
 if(localStorage.searchQuery === 'food') {
-	search.setAttribute('placeholder', 'What do you want to eat?')
-} else search.setAttribute('placeholder', 'What do you want to drink?')
+	search.setAttribute('placeholder', 'Enter a food (i.e., sandwich, steak, peppers,tacos)')
+} else search.setAttribute('placeholder', 'Enter a drink (i.e., vodka, gin, whiskey)')
 
 // If true calls Drink API
 // If false calls Food API
@@ -41,7 +41,7 @@ function settingsChecker(e) {
 	if(food.checked) {
 		console.log('e')
 		localStorage.searchQuery = 'food'
-		search.setAttribute('placeholder', 'What do you want to eat?')
+		search.setAttribute('placeholder', 'Enter a food (i.e., sandwich, steak, peppers,tacos)')
 		options = {
 			method: 'GET',
 			headers: {
@@ -53,7 +53,7 @@ function settingsChecker(e) {
 	if(drink.checked) {
 		console.log('d')
 		localStorage.searchQuery = 'drink'
-		search.setAttribute('placeholder', 'What do you want to drink?')
+		search.setAttribute('placeholder', 'Enter a drink (i.e., vodka, gin, whiskey)')
 		options = {
 			method: 'GET',
 			headers: {
@@ -63,7 +63,7 @@ function settingsChecker(e) {
 	}
 
 	if (localStorage.searchQuery === 'drink') {
-		search.setAttribute('placeholder', 'What do you want to drink?')
+		search.setAttribute('placeholder', 'Enter a drink (i.e., vodka, gin, whiskey')
 	}
 	
 }

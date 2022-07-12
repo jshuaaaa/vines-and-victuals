@@ -1,3 +1,5 @@
+ 
+
 const ingredientList = document.getElementById('ingredient-list')
 options = {
 	method: 'GET',
@@ -214,12 +216,12 @@ function storeData(e) {
 
     saveResult.setAttribute('style', 'display:none;')
    
+   
     
     
 }
 
 saveResult.addEventListener('click', storeData)
     
-    
-    
+
 
