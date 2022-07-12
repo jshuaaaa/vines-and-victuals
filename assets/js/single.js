@@ -39,19 +39,19 @@ console.log(drinkName)
   
 
         //Function used to get an image for our drinks as the API doesnt have a premade image for them!
-    function getApiDrinkImage() {
-        fetch(url9, options)
-        .then(response => response.json())
-        .then(function(response){
-            console.log(response)
-            $('<img>', {
-                src: response.value[0].thumbnail
-            }).appendTo('#ingredient-list')
+    // // function getApiDrinkImage() {
+    // //     fetch(url9, options)
+    // //     .then(response => response.json())
+    // //     .then(function(response){
+    // //         console.log(response)
+    // //         $('<img>', {
+    // //             src: response.value[0].thumbnail
+    // //         }).appendTo('#ingredient-list')
         
-            image = response.value[0].thumbnail
+    // //         image = response.value[0].thumbnail
     
             
-    })}
+    // })} Used for presentation however images are displaying inappropriate content so I am commenting it out for now and adding a placeholder
     
 //Function called when user is on a drink related page
 function getApiSingleForDrink() {
@@ -70,7 +70,9 @@ function getApiSingleForDrink() {
             $('<p>').appendTo('#ingredient-list').text(response.body[0][0].ingredients[index])
         }
 
-       
+       $('<img>', {
+        src: 'https://www.ohlq.com/ui/dist/assets/toolkit/images/product/no-product-image.png'
+       }).appendTo('#ingredient-list')
         // the below code is an algorithm used to get foods with similar ingredients as the current drink
         let ingredient;
 		var i = 0
