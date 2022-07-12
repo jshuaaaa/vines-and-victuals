@@ -149,7 +149,7 @@ input[type="text"]::placeholder {
 
 #s-cover {
   width: 1px;
-  padding-left: 35px;
+  
 }
 
 button {
@@ -356,11 +356,11 @@ header {
 
 }
 .info h3{
-  display: bl;
+  display: block;
   margin-left: 10px;
   margin-right: 10px;
   font-size: 40px;
-  color: rgba(255, 255, 255, 0.651);
+  color: gold;
 
 }
 .info p{ 
@@ -450,6 +450,12 @@ height: 48px;
     }
 }
 
+@media only screen and (max-width: 1065px) {
+  .info{ 
+      flex-direction: column;
+}
+}
+
 @media screen and (max-width: 769px) {
   .column ,.is-full {
   max-width: 100vw;}
@@ -461,7 +467,10 @@ height: 48px;
     max-height: 30vh;
     width: 100%;
   }
-
+  #s-cover{
+    position: relative;
+    right: 12%;
+  }
 }
 
 @media screen and (max-width: 420px) {
@@ -469,5 +478,9 @@ height: 48px;
     max-height: 20vh;
     width: 100%;
   }
-
+ 
+  #s-cover{
+    position: relative;
+    right: 35%;
+  }
 }
