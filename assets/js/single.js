@@ -36,16 +36,15 @@ console.log(drinkName)
     
   
     function getApiDrinkImage() {
-        fetch(url9, options2)
+        fetch(url9, options)
         .then(response => response.json())
         .then(function(response){
-            image = response.value[0].thumbnail
             console.log(response)
             $('<img>', {
                 src: response.value[0].thumbnail
             }).appendTo('#ingredient-list')
         
-           
+            image = response.value[0].thumbnail
     
             
     })}
