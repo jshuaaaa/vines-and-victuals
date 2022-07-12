@@ -216,9 +216,7 @@ header + .headerOne > h1 {
   display: flex;
   justify-content: center;
   align-items: center;
-  position: absolute;
-  top: 10vh;
-  left: 30.5%;
+  position: relative;
   margin: auto;
 }
 
@@ -229,7 +227,7 @@ header + .headerOne > h1 {
   justify-content: center;
   align-items: center;
 
-  animation: loading02 2.3s infinite alternate;
+  animation: loading02 2.5s infinite alternate;
   padding: 1px;
 }
 .loading02 span:nth-child(2) {
@@ -300,6 +298,12 @@ header + .headerOne > h1 {
 }
 .loading02 span:nth-child(24) {
   animation-delay: 2.3s;
+}
+.loading02 span:nth-child(25) {
+  animation-delay: 2.4s;
+}
+.loading02 span:nth-child(26) {
+  animation-delay: 2.5s;
 }
 
 @keyframes loading02 {
