@@ -35,8 +35,10 @@ console.log(drinkName)
   } else 
     var url6 = `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/${FoodIdSearch}/information`
     getApiSingleForFood()
-    
+    // The above code is used to dynamically get data based on the URL of the Item searched for
   
+
+        //Function used to get an image for our drinks as the API doesnt have a premade image for them!
     function getApiDrinkImage() {
         fetch(url9, options)
         .then(response => response.json())
@@ -51,13 +53,13 @@ console.log(drinkName)
             
     })}
     
-
+//Function called when user is on a drink related page
 function getApiSingleForDrink() {
 	fetch(url5, options)
 	.then(response => response.json())
 	.then(function(response){
         console.log(response)
-
+        // displaying data
         document.getElementById('instructions').setAttribute('style', 'display:none;')
         title = response.body[0][0].name
         console.log(title)
@@ -69,6 +71,7 @@ function getApiSingleForDrink() {
         }
 
        
+        // the below code is an algorithm used to get foods with similar ingredients as the current drink
         let ingredient;
 		var i = 0
 		let arrayStatusForFood = true
@@ -124,6 +127,7 @@ function getApiSingleForDrink() {
         .catch($('#title').text("Sorry we cant get this data right now!"),$('#related').text(''))
     }
 
+    // The exact same as the above code but inverse for food related queries
 function getApiSingleForFood() {
     fetch(url6, options)
 	.then(response => response.json())
@@ -197,6 +201,7 @@ function getApiSingleForFood() {
     .catch($('#title').text("Sorry we cant get this data right now!"),$('#related').text(''))
 }
 
+// The below code is used to save a recipe into the users local storage to display on save.html
 var saveResult = document.getElementById('save-result')
 function storeData(e) {
     e.preventDefault()

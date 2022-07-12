@@ -1,7 +1,8 @@
-
+// JS file for localstorage DATA
 var storedRecipe = JSON.parse(localStorage.storedRecipe)
 var stored = document.getElementById('stored')
 
+//Function used to display storage
 function displayStorage () {
     stored.innerHTML = ""
 for( var i=0 ; i < storedRecipe.length ; i++){
@@ -24,7 +25,7 @@ for( var i=0 ; i < storedRecipe.length ; i++){
 
 }  
 }
-
+//Event listener for a delete button to remove something from your storage
 stored.addEventListener("click", function(event) {
     var element = event.target;
 

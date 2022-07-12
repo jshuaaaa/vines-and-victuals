@@ -18,7 +18,7 @@ var options = {
 		'X-RapidAPI-Key': 'c36c798c41msh6e4944725bbf051p1c3342jsn7e587c0ecbdc'
 	}
 }
-
+//Defines Variables
 
 
 if (localStorage.searchQuery === undefined) {
@@ -29,13 +29,12 @@ if(localStorage.searchQuery === 'food') {
 	search.setAttribute('placeholder', 'Enter a food (i.e., sandwich, steak, peppers,tacos)')
 } else search.setAttribute('placeholder', 'Enter a drink (i.e., vodka, gin, whiskey)')
 
-// If true calls Drink API
-// If false calls Food API
+// Checks for searchQuery and makes placeholder based on what user is searching for
 
 
 
 
-
+// Function used to change search criteria
 function settingsChecker(e) {
 	e.preventDefault()
 	if(food.checked) {
@@ -73,7 +72,7 @@ function settingsChecker(e) {
 $('#save-button').on("click", settingsChecker)
 
 $('#searchButton').on("click", move)
-
+//Moves user to results page
 function move(e) {
 	e.preventDefault()
 	localStorage.searchResult = search.value
@@ -93,7 +92,7 @@ function move(e) {
 	
 
 }
-
+// Function called in results.js to call the Api Fetch
 	function fetchApi(){
 	
 		if (localStorage.searchQuery === 'drink') {
@@ -117,7 +116,7 @@ function getDrinks() {
 		console.log(response)
 		let ingredient;
 		var i = 0
-		
+		//Displaying data on page
 		for(var z = 0; z < response.body[0].length; z++) {
 			$('<a>', {
 				href: './single.html?=drink=' + response.body[0][z].name + '=' + z,
@@ -141,7 +140,7 @@ function getDrinks() {
 			}
 
 		loopArray()
-
+			// LoopArray and get FoodByIngeredients is an algorithm used to traverse each array allowing the api's to talk to eachother and find mutual ingredients and list the products on the screen in single.js
 		function loopArray() {
 		ingredient = response.body[0][0].ingredients[i]
 		newUrl = `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch?includeIngredients=${ingredient}&type=main course&addRecipeInformation=true`
@@ -185,7 +184,7 @@ function getDrinks() {
 })
 
 }
-//Function getFood
+//The same thing as get drinks but for the food side
 function getFood() {
 	fetch(url, options)
 	.then(response => response.json())
