@@ -54,6 +54,7 @@ header + h1 {
   display: none;
 }
 #stored {
+  box-shadow: rgb(0, 0, 0) -5px 5px, rgb(0, 0, 0) -10px 10px, rgb(0, 0, 0) -15px 15px, rgba(10, 0, 0, 0.124) -20px 20px, rgba(0, 0, 0, 0.33) -25px 25px;
   border: gold .5px solid;
   border-radius: 50px;
   margin: auto;
