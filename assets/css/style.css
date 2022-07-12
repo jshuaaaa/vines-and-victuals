@@ -400,6 +400,8 @@ height: 48px;
 
 
 
+
+
 @media only screen and (max-width: 600px) {
   .fas.fa-bookmark { 
       font-size: 15px; 
@@ -429,6 +431,11 @@ height: 48px;
     }
 }
 
+@media screen and (max-width: 769px) {
+.modal-card, .modal-content{
+  max-width: 80%
+}
+}
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
   .fas.fa-bookmark { 
